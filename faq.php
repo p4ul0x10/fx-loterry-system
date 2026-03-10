@@ -6,52 +6,8 @@ $host =$_SERVER['REQUEST_METHOD'];
 
 session_start();
 include "php/conn.php";
-ini_set( 'display_errors', 0);
-
-$ip = base64_encode($_SERVER['REMOTE_ADDR']);
-$get_ip = mysqli_query($con, "SELECT * FROM user_config WHERE ipgeo='$ip'");
-$ip_sets = mysqli_fetch_array($get_ip);
-
-$date=date_create();
-$check_ip_access_time = date_timestamp_get($date) - $ip_sets['last_datatime'];
-$last_datatime = date_timestamp_get($date);
-
-if($ip_sets['access_block'] == "true" && $ip_sets['ipgeo'] == $ip){
-  
-  if($check_ip_access_time >= 0){
-    $update_access = mysqli_query($con, "UPDATE user_config SET access=access+1 WHERE ipgeo='$ip'");
-    $update_reset_block = mysqli_query($con, "UPDATE user_config SET access_block = '' WHERE ipgeo = '$ip'");
-    $update_reset_time = mysqli_query($con, "UPDATE user_config SET last_datatime = '$last_datatime' WHERE ipgeo = '$ip'");
-  }else{
-    $block_access_time = $ip_sets['last_datatime'] - date_timestamp_get($date);
-    echo "<center>Account blocked for ".$block_access_time." seconds<br>reason abusive access on server.</center>";
-    mysqli_close($con);
-    exit();
-  }
-
-}else if($ip_sets['access_block'] == "" && $ip_sets['ipgeo'] == $ip && $ip_sets['access'] < 15 && $check_ip_access_time <= 20){
-
-  $update_access = mysqli_query($con, "UPDATE user_config SET access=access+1 WHERE ipgeo='$ip'");
-
-}else if($ip_sets['access_block'] == "" && $ip_sets['ipgeo'] == $ip && $ip_sets['access'] >= 15 && $check_ip_access_time <= 20){
-
-  $ip_access_time_block = date_timestamp_get($date) + 300; //block for 5 min
-  $update_access_block = mysqli_query($con, "UPDATE user_config SET access_block = 'true' WHERE ipgeo = '$ip'");
-  $update_reset_access = mysqli_query($con, "UPDATE user_config SET access = 0 WHERE ipgeo = '$ip'");
-  $update_reset_time = mysqli_query($con, "UPDATE user_config SET last_datatime = '$ip_access_time_block' WHERE ipgeo = '$ip'");
-
-  echo "<center>Account blocked for 300 seconds<br>reason abusive access on server.</center>";
-  mysqli_close($con);
-  exit();
-
-}else if($ip_sets['access_block'] == "" && $ip_sets['ipgeo'] == $ip && $ip_sets['access'] <= 15 && $check_ip_access_time > 20){
-
-  $update_access = mysqli_query($con, "UPDATE user_config SET access=0 WHERE ipgeo='$ip'");
-  $update_reset_time = mysqli_query($con, "UPDATE user_config SET last_datatime = '$last_datatime' WHERE ipgeo = '$ip'");
-
-}
-
 include_once "php/functions.php";
+ini_set( 'display_errors', 0);
 
 ?>
 <!doctype html>
