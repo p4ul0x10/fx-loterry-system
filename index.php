@@ -6,9 +6,8 @@ $host =$_SERVER['REQUEST_METHOD'];
 
 session_start();
 include "php/conn.php";
-ini_set( 'display_errors', 1);
-
 include "php/functions.php";
+ini_set( 'display_errors', 1);
 
 ?>
 <!doctype html>
