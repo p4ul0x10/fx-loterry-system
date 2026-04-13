@@ -74,7 +74,10 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 
 		$str_ar_fs = str_split($_POST['search']);
 		$str_len_fs = strlen($_POST['search']);
-
+		
+		$last_count_char = 0;
+		$current_char = 0;
+		
 		while ($n < $num_rows_search) {
 			
 			$str_ar = str_split($ar_str[$n]);
@@ -84,8 +87,11 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 		
 				while($nnn < $str_len){
 
-					if($str_ar_fs[$nn] == $str_ar[$nnn]){ //name valid
+					if($str_ar_fs[$nn] == $str_ar[$nnn] && $nnn < $str_len_fs){ //name valid
+						
 						$v++;
+						break;
+					
 					}
 
 					$nnn++;
@@ -95,7 +101,11 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 				$nadd = $nn + 1;
 				
 				if($nadd >= $str_len_fs){
-				
+
+					if($v < $str_len_fs){
+						$ar_id[$n] = 0;
+					}
+
 					if($v < 1){ //invalid id -> search not found
 						$ar_id[$n] = 0;
 					}else{
@@ -110,7 +120,7 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 
 			$nn = 0;
 			$nnn = 0;
-
+			$v = 0;
 			//echo " ".$ar_id[$n]." ".$fs." ".$ar_str[$n];
 		
 			$n++;
@@ -173,7 +183,7 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 
 	}
 	//end
-
+	
 	//start
 	$get_tkt_buy_list = mysqli_query($con, "SELECT * FROM loterry_winners WHERE session_id = '$last_session_lt'");
 	$num_rows = mysqli_num_rows($get_tkt_buy_list);
@@ -216,7 +226,7 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 		   	//end
 
 		   	//start show data
-		   	if($mode_search == "fw-name" && $ar_id[$cs] != "0" && $ar_win['id'] == $ar_id[$cs] && $ipg <= $pgi){ ?> 
+		   	if($mode_search == "fw-name" && $ar_win['id'] == $ar_id[$cs]){ ?> 
 
 		   		<div class="col-xl-3 col-md-6" id="<?php echo $count."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
 					<div class="card bg-theme text-white mb-1">

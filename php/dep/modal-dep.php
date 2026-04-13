@@ -16,6 +16,7 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
 
 ?>
 <script type="text/javascript">
+  
   $(document).ready(function(){
     
     if(location.href.indexOf("modal_deposits") >= 1){
@@ -29,6 +30,7 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
       if(width < 850){
       
         type_modal = "mobile";
+  
         $(".modal-depositar").css({"top":"0px"});
         
         if(width > 800){ //tablet show
@@ -104,6 +106,9 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
 
       }
 
+      wd_w = window.innerWidth;
+      ajust_card(wd_w);
+    
     });
 
     width = $("body").width();
@@ -125,8 +130,6 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
       flex_wrap = "wrap";
 
     }
-
-    ajust_card(width);
 
     len_card = $(".row-flex").length;
   
@@ -540,13 +543,15 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
 
     });*/
 
-    ajust_card(wd);
+    wd_w = window.innerWidth;
+    ajust_card(wd_w);
     
     //window.history.pushState(initialState, '', location.href+"&mod_show=");
   }
 
   function ajust_card(div_width) {
       
+    alert("enload");  
     //start ajust data on card -> deposits mobile (smartphone)
     wd_col = $(".col-mb-dep-h").width();
     $(".col-12 .col-sm-12").css({"margin-top": "2%"});

@@ -1,7 +1,7 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT']."/php/lt/pgs-functions.php";
 
-$host =$_SERVER['REQUEST_METHOD'];
+$host = $_SERVER['REQUEST_METHOD'];
 if($host == "GET"){
 	exit();
 }
@@ -203,7 +203,7 @@ if($div_nv_tw_no_exactly != false){ $ii += 1; //rest div / page limit ?>
 if($div_nv_tw_no_exactly != false){ $end_pg = $div_nv_tw + 1; }else{ $end_pg = $div_nv_tw; } 
 
 if($pg_mode == "w"){
-	mysqli_query($con, "UPDATE user_config SET i_pg_w = '1', e_pg_w = '$end_pg' WHERE id_user='$id_user'");
+	mysqli_query($con, "UPDATE user_config SET i_pg_w = '1', e_pg_w = '$end_pg' WHERE id_user = '$id_user'");
 }else if($pg_mode == "n"){
-	mysqli_query($con, "UPDATE user_config SET i_pg_n = '1', e_pg_n = '$end_pg' WHERE id_user='$id_user'");
+	mysqli_query($con, "UPDATE user_config SET i_pg_n = '1', e_pg_n = '$end_pg' WHERE id_user = '$id_user'");
 } ?>

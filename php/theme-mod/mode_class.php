@@ -2,9 +2,10 @@
 
 function theme_mode_color(){
 
-	include "php/conn.php";
+	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
 	$email = $_SESSION['email'];
 
+	$var_mode_theme = array();
 	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
 
 	if($row_true = mysqli_affected_rows($con) >= 1){
@@ -19,22 +20,27 @@ function theme_mode_color(){
 			
 			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
 
-				echo "light";
+				$vmt = "light";
 			
 			}else if($get_user['conf_theme'] == "dark"){
 			
-				echo "dark";
+				$vmt = "dark";
 			}
 		}
+	
+		$var_mode_theme[0] = $vmt;
 	}
-		
+	
+	return $var_mode_theme;	
+
 }
 
 function nav_link(){
 
-	include "php/conn.php";
+	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
 	$email = $_SESSION['email'];
 
+	$var_mode_color = array();
 	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
 
 	if($row_true = mysqli_affected_rows($con) >= 1){
@@ -49,45 +55,21 @@ function nav_link(){
 			
 			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
 
-				echo "text-light";
+				$vmc = "color-theme";
 			
 			}else if($get_user['conf_theme'] == "dark"){
 			
-				echo "text-light";
+				$vmc = "text-light";
+			
 			}
+		
 		}
+	
+		$var_mode_color[0] = $vmc;
+
 	}
-		
-}
-
-function bg_color(){
-
-	include "php/conn.php";
-	$email = $_SESSION['email'];
-
-	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
-
-	if($row_true = mysqli_affected_rows($con) >= 1){
-		
-		$get_user = mysqli_fetch_array($check_id_user);
-		$id = $get_user['id'];
-		
-		$get_theme = mysqli_query($con, "SELECT * FROM user_config WHERE id_user = '$id'");
-		if($row_true = mysqli_affected_rows($con) >= 1){
-		
-			$get_user = mysqli_fetch_array($get_theme);
-			
-			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
-
-				echo "text-light";
-			
-			}else if($get_user['conf_theme'] == "dark"){
-			
-				echo "bg-theme-d";
-			}
-		}
-	}
-		
+	
+	return $var_mode_color;	
 }
 
 function text_color(){
@@ -95,6 +77,7 @@ function text_color(){
 	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
 	$email = $_SESSION['email'];
 
+	$var_mode_text_color = array();
 	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
 
 	if($row_true = mysqli_affected_rows($con) >= 1){
@@ -109,23 +92,27 @@ function text_color(){
 			
 			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
 
-				echo "color-theme";
+				$vtt = "color-theme";
 			
 			}else if($get_user['conf_theme'] == "dark"){
 			
-				echo "text-light";
+				$vtt = "text-light";
 
 			}
 
 		}
 		
+		$var_mode_text_color[0] = $vtt;
+	
 	}
 		
+	return $var_mode_text_color;
+
 }
 
 function nav_link_out(){
 
-	include "php/conn.php";
+	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";	
 	$email = $_SESSION['email'];
 
 	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
@@ -158,8 +145,45 @@ function nav_link_out(){
 
 function bg_theme(){
 
-	include "php/conn.php";
+	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
+	$email = $_SESSION['email'];
+
+	$var_mode_bg = array();
+	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
+
+	if($row_true = mysqli_affected_rows($con) >= 1){
+		
+		$get_user = mysqli_fetch_array($check_id_user);
+		$id = $get_user['id'];
+		
+		$get_theme = mysqli_query($con, "SELECT * FROM user_config WHERE id_user = '$id'");
+		if($row_true = mysqli_affected_rows($con) >= 1){
+		
+			$get_user = mysqli_fetch_array($get_theme);
+			
+			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
+
+				$vtb = "bg-light";
+			
+			}else if($get_user['conf_theme'] == "dark"){
+			
+				$vtb = "bg-dark";
+			
+			}
+		
+		}
 	
+		$var_mode_bg[0] = $vtb;
+
+	}
+	
+	return $var_mode_bg;
+
+}
+
+function bg_color(){
+
+	include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
 	$email = $_SESSION['email'];
 
 	$check_id_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email='$email'");
@@ -176,15 +200,14 @@ function bg_theme(){
 			
 			if($get_user['conf_theme'] == "light" || $get_user['conf_theme'] == "default"){
 
-				echo "bg-light";
+				echo "text-light";
 			
 			}else if($get_user['conf_theme'] == "dark"){
 			
-				echo "bg-dark";
+				echo "bg-theme-d";
 			}
 		}
 	}
 		
 }
-
 ?>

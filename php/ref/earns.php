@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
-      	<div class="card <?php bg_theme(); ?>" style="width: 100%;">
+      	<div class="card <?php echo $mode_theme_bg[0]; ?>" style="width: 100%;">
           <?php 
           $user = $_GET['earns_ref'];
           if(isset($user)){

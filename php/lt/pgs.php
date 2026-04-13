@@ -1158,12 +1158,13 @@ while($ar_win = mysqli_fetch_array($lt)){
 	</div>
 	<?php $ipg++; }else if($limit_ini >= $ini_ishow_ini && $str_id[0] == "n"){ //return network data 
 	if($pgn <= 1){ $count_id = $count; }else{ $count_id = $ini_id_count + $count; } ?>
+	<?php $mode_theme_text_pgs = text_color(); ?>
 	<tr>
 		<th scope="row">
 			<a href="#pos_ref" class="id_ref text-muted"><?php echo $count_id; ?></a>
 		</th>
 		<td>
-			<a href="?ref_name=<?php echo $ar_win['nome_ref']; ?>" class="name_ref text-light"><?php echo $ar_win['nome_ref']; ?></a>
+			<a href="?ref_name=<?php echo $ar_win['nome_ref']; ?>" class="name_ref <?php echo $mode_theme_text_pgs[0]; ?>"><?php echo $ar_win['nome_ref']; ?></a>
 		</td>
 		<td>
 			<a href="#ref_level" class="level_ref text-muted"><?php echo $ar_win['level_ref']; ?></a>
@@ -1172,10 +1173,10 @@ while($ar_win = mysqli_fetch_array($lt)){
 			<a href="#ref_date" class="date_ref text-muted"><?php echo $ar_win['started_ref']; ?></a>
 		</td>
 		<td>
-			<a href="#up_name_ref" class="up_ref <?php text_color(); ?>"> <?php echo $ar_win['leader_ref']; ?></a>
+			<a href="#up_name_ref" class="up_ref <?php echo $mode_theme_text_pgs[0]; ?>"> <?php echo $ar_win['leader_ref']; ?></a>
 		</td>
 		<td>
-			<a href="#status_ref" class="status_ref <?php text_color(); ?>"><?php echo $ar_win['status_ref']; ?></a>
+			<a href="#status_ref" class="status_ref <?php echo $mode_theme_text_pgs[0]; ?>"><?php echo $ar_win['status_ref']; ?></a>
 		</td>
 		<td>
 			<a href="?earns_ref=<?php echo $ar_win['nome_ref']; ?>" class="cv earns_ref text-muted"><?php echo $ar_win['earns_ref']; ?></a>

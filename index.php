@@ -1,25 +1,25 @@
 <?php
 $host =$_SERVER['REQUEST_METHOD'];
-  if($host == "POST"){
-    exit();
-  }
+if($host == "POST"){
+  exit();
+}
 
 session_start();
 include "php/conn.php";
 ini_set( 'display_errors', 1);
 
 include "php/functions.php";
-
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Fx-Loterry">
+    <meta name="author" content="p4ul0x10">
     <link rel="icon" type="image/ico" href="images/coins/fxicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-      FX Robot
-    </title>
+    <title>FX Loterry</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -67,6 +67,7 @@ include "php/functions.php";
     body { top: 0px !important; }
     </style>
     <script type="text/javascript">
+    
       setInterval(function(){
         
         scrolltop = window.scrollY;
@@ -152,123 +153,11 @@ include "php/functions.php";
 
         }   
         
-        //position: relative !important; float:left !important; margin-top: 70px; margin-left: 202px !important;  
       }, 1);
     </script>
-    <script type="text/javascript">
-      $(window).on("load", function(){
-
-        setTimeout(function(){
-            
-            // página totalmente carregada (DOM, imagens etc.)
-            $(".fix").css("all", "unset");
-            $("#loading").remove();
-            $.getJSON("https://ipinfo.io/<?php echo $_SERVER['REMOTE_ADDR']; ?>", function(data){
-              country = data['country'];
-              $("body").attr("id", country);
-            }); 
-
-            document.getElementsByTagName("header")[0].style.zIndex='10000';
-         
-            /*if(wd > 600 && wd < 990){
-              
-              $("marquee:eq(0)").after('<div id="sec-0" class="slider-plan"><div id="next-plan-btn" class="col-1 float-right next-plan-btn" onclick="slid_plan(id);" style="top: 138px;z-index: 1111;"><div><i aria-hidden="true" class="fa fa-3x fa-angle-right text-light float-right" style="float:right"></i></div></div><div id="prev-plan-btn" class="col-1 float-left prev-plan-btn" onclick="slid_plan(id);" style="top: 138px;z-index: 1111;"><div><i aria-hidden="true" class="fa fa-3x fa-angle-left text-light" style="float: left;"></i></div></div></div>');
-
-            }*/
-
-         }, 1000);
-
-      });
-
-      function show_mobile_menu(){
-        
-        wd = $("body").width();
-        
-        if(wd < 650){
-
-          $(".nav-mastheadt").toggle();
-          $("#howwork").removeClass("mt-5");
-          $("#howwork").addClass("mt-1");
-        
-        }else{
-
-          $("#howwork").removeClass("mt-1");
-          $("#howwork").addClass("mt-5");
-
-        }
-     
-        if($(".nav-mastheadt").css("display") == "block"){
-        
-          $(".navm-toggle").removeClass("fa-bars");
-          $(".navm-toggle").addClass("fa-close");
-        
-        }else{
-        
-          $(".navm-toggle").removeClass("fa-close");
-          $(".navm-toggle").addClass("fa-bars");
-        
-        }    
-
-      }
-
-      function slid_plan(slid_type){
-      
-        action = slid_type;
-
-        if(action.charAt(0) == "p"){
-          replace_id_str = action.replace("prev-plan-btn-", "");
-        }else if(action.charAt(0) == "n"){
-          replace_id_str = action.replace("next-plan-btn-", "");
-        }
-
-        current_slid = replace_id_str;
-      
-        for (var i = 3; i >= 1; i--) {
-          
-          idx = parseFloat(i) - parseFloat(1);
-            
-          if(current_slid == i){
-
-            $(".sp-mg-plan:eq("+idx+")").show();
-            current_slid_setted = idx;
-
-          }else{
-          
-            $(".sp-mg-plan:eq("+idx+")").hide();
-          
-          }
-
-        }
-
-        if(current_slid == 1){
-
-          $(".prev-plan-btn").attr("id", "prev-plan-btn-1");  
-          $(".next-plan-btn").attr("id", "next-plan-btn-2");  
-        
-        }
-
-        if(current_slid == 2){
-        
-          $(".prev-plan-btn").attr("id", "prev-plan-btn-1");  
-          $(".next-plan-btn").attr("id", "next-plan-btn-3");  
-        
-        }
-
-        if(current_slid == 3){
-        
-          $(".prev-plan-btn").attr("id", "prev-plan-btn-2");  
-          $(".next-plan-btn").attr("id", "next-plan-btn-3");  
-        
-        }
-        
-        $(".slider-plan").attr("id", "sec-0");
-      
-      }
-
-    </script>
   </head>
-  <body class="text-center bg-light" onload="main_change();" onresize="main_change();">
-    <div class="fix" style="width: 100%; height: 3000px; position: absolute; z-index: 10000;margin-top: 6%; background: rgba(17,18,36, 1);"><img id="loading" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" width="100px" height="100px" style="margin-top: 8%;"></div>
+  <body class="text-center bg-light" onload="main_change();" onresize="main_change();" style="overflow-y: hidden;">
+    <div class="fix" style="width: 100%; position: absolute; z-index: 10000;margin-top: 6%; background: rgba(17,18,36, 1);"><img id="loading" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" width="100px" height="100px" style="margin-top: 8%;"></div>
     <div class="fluid-container w-100 h-100 flex-column">
       <!-- start header here -->
       <?php include "theme-parts/header.php"; ?>
@@ -671,7 +560,7 @@ include "php/functions.php";
           ?>
           <h1 class="color-theme">Last winners -</h1>
           <small><?php echo $array_last_session_lt['data']; ?></small>
-          <div class="daily-winners fluid-container mt-5">
+          <div class="daily-winners fluid-container mt-5" style="width: 90%; margin: 0px auto;">
             <?php 
             
             $get_last_lt_win = mysqli_query($con, "SELECT * FROM loterry_winners WHERE session_id = '$last_session_lt_session'");
@@ -929,6 +818,13 @@ include "php/functions.php";
             </div>
           </div>
           <script type="text/javascript">
+            //Instantly scroll to the top-left corner
+            window.scrollTo(0, 0);
+
+            //Add height for init loading page      
+            const viewportHeight = window.innerHeight;
+            $(".fix").css({"height": viewportHeight+"px"});
+
             //init show dep
             $(".depo-user:eq(0)").addClass("depo-user-selected");
             $(".depo-user:eq(0)").addClass("align-depo-user-1");

@@ -71,3 +71,11 @@
     </div>
   </div>
 </footer>
+<script>
+  //Instantly scroll to the top-left corner
+  window.scrollTo(0, 0);
+
+  //Add height for init loading page      
+  const viewportHeight = window.innerHeight;
+  $(".fix").css({"height": viewportHeight+"px"});
+</script>

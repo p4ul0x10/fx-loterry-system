@@ -7,10 +7,12 @@
 <?php echo "Total earn: 10"; */
 ini_set( 'display_errors', 0);
 
-include "../conn.php";
-include "analitics/functions.php";
+include_once "../conn.php";
+include_once "analitics/functions.php";
 
-session_start();
+if(!$_SESSION['email']){
+    session_start();
+}
 
 $email = $_SESSION['email'];
 

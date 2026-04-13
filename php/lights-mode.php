@@ -14,8 +14,8 @@
 
 		if($lights != "#light" && $lights != "#dark"){
 	
-				echo "Invalid light mode !";
-				exit();
+			echo "Invalid light mode !";
+			exit();
 	
 		}else{
 
@@ -31,6 +31,7 @@
 				}else{
 					$mode = "light";
 				}
+			
 				echo $mode;
 				$update_coin = mysqli_query($con, "UPDATE user_config SET conf_theme = '$mode' WHERE id_user = '$id'");
 				

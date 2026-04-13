@@ -1333,7 +1333,7 @@
 						      <div class="col-12 col-sm-12 col-10-<?php echo $cod_dep; ?>">
 						      	<div class="row row-flex">
 						      		<div class="row m-auto">	
-												<ul class="ul-dep font-dep-mt-3 float-left" style="display: flex !important;">					      		
+												<ul class="ul-dep font-dep-mt-3 float-left" style="display: flex !important;">		
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Plan: <a href="#" class="nav-link text-muted"><?php echo $list['type_dep']; ?></a>
 						      				</li>

@@ -13,8 +13,8 @@
         </button>
       </div>
       <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
-      <div class="card <?php bg_theme(); ?>" style="width: 100%;">
-		<?php
+      <div class="card <?php echo $mode_theme_bg[0]; ?>" style="width: 100%;">
+			<?php
 
 	  	$user = $_GET['ref_name'];
 	  	$email = $_SESSION['email'];
@@ -235,12 +235,13 @@
 		 ?>
 	  <div class="card-body">
 	    <h5 class="card-title">Activities</h5>
-	    <div class="container col-md-10"><p class="card-text">Deposits: <a href='#' class="text-muted"><?php echo $count_dep_pro; ?></a></p>
-	    <p class="card-text">Withdraws: <a href='#' class="text-muted"><?php echo $count_with_pro; ?></a></p>
-	   	<p class="card-text">Loterrys: <a href="#" class="text-muted"><?php echo $session_count; ?></a></p>
-	    <p class="card-text">Referrals: <a href='#' class="text-muted"><?php echo $count_ref_pro; ?></a></p>
-	    <p class="card-text">Referral earns: <a href='#' class="cv text-muted"> <?php echo number_format($count_earns_pro, 2, '.', ''); ?></a></p>
-	    <p class="card-text">Member since: <a href="#" class="text-muted"><?php echo $member_since_pro; ?></a></p></div>
+	    <div class="container col-md-10">
+	    <p class="card-text <?php echo $mode_theme_text[0]; ?>">Deposits: <a href='#' class="text-muted"><?php echo $count_dep_pro; ?></a></p>
+	    <p class="card-text <?php echo $mode_theme_text[0]; ?>">Withdraws: <a href='#' class="text-muted"><?php echo $count_with_pro; ?></a></p>
+	   	<p class="card-text <?php echo $mode_theme_text[0]; ?>">Loterrys: <a href="#" class="text-muted"><?php echo $session_count; ?></a></p>
+	    <p class="card-text <?php echo $mode_theme_text[0]; ?>">Referrals: <a href='#' class="text-muted"><?php echo $count_ref_pro; ?></a></p>
+	    <p class="card-text <?php echo $mode_theme_text[0]; ?>">Referral earns: <a href='#' class="cv text-muted"> <?php echo number_format($count_earns_pro, 2, '.', ''); ?></a></p>
+	    <p class="card-text <?php echo $mode_theme_text[0]; ?>">Member since: <a href="#" class="text-muted"><?php echo $member_since_pro; ?></a></p></div>
 	  </div>
 		  <?php 
 		  /*

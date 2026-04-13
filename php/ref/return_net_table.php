@@ -1,9 +1,5 @@
 <?php
-	ini_set( 'display_errors', 0);
 
-	include_once "../conn.php";
-	
-	session_start();
 	$user = $_SESSION['email'];
 	$get_info = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$user'");
 	$count = 1;
@@ -68,6 +64,7 @@ margin: 5px 5px !important; }
     <input class="form-control search-input sn" id="search-n" type="search" aria-label="Search" placeholder="Select type" autocomplete="off" disabled>
   </div>
 </div>
+</div>
 <table id="box-menu-table" class="table table-striped <?php echo $table_color; ?> table-mobile-ref1 ref-table-top color-theme">
 	<thead class="<?php echo $text_color; ?>">
     <tr>
@@ -128,7 +125,7 @@ margin: 5px 5px !important; }
 </table>
 <div class="fixed-table-pagination fixed-pagination-n" style="">
   <div class="float-left pagination-detail">
-    <div class="page-list color-theme">Showing in 
+    <div class="page-list color-theme"> 
       <div class="btn-group dropdown dropup nc">
         <button class="btn btn-secondary dropdown-toggle bg-theme" type="button" data-bs-toggle="dropdown" id="ndd" onclick="inif(id);">
           <span class="page-size page-size-n"><?php echo $get_user['lt_nipg']; ?></span>
@@ -141,10 +138,10 @@ margin: 5px 5px !important; }
           <div class="dropdown-item page-nn" id="n100" onclick="inif(id)">100</div>
           <div class="dropdown-item page-nn" id="na<?php echo $num_net_rows; ?>" onclick="inif(id)">All</div>
         </div>
-      </div> rows per page</div>
+      </div></div>
     </div>
     <div class="pg-n float-right pagination">
-      <ul class="pagination">
+      <ul class="pagination float-right">
       	<?php 
       	if($num_net_rows > $max_ipg){ //pgs found
       		

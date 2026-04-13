@@ -76,7 +76,7 @@ margin: 5px 5px !important; }
 					echo '
           <tr>
             <th scope="row"><a href="#pos_ref" class="id_refm text-light">'.$count.'</a></th>
-            <td><a href="#ref_name" class="name_refm">'.$rows_info['f_nome'].'</a></td>
+            <td><a href="#ref_name" class="name_refm color-theme">'.$rows_info['f_nome'].'</a></td>
             <td><a href="#ref_level" class="text-light level_refm">3</a></td>
             <td><a href="#ref_date" class="text-light date_refm">'.$rows_info['data'].'</a></td>
           	<td><a href="#up_name_ref" class="up_refm">'.$sponsor_main.'</a></td>

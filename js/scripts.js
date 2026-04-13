@@ -481,7 +481,6 @@ $(document).ready(function(){
 
    	});
 	
-
    $(".concluir-deposito").hide();
    $(".confirm-here").hide();
    //$(".concluir-deposito-f").hide();
@@ -1084,10 +1083,11 @@ $(document).ready(function(){
 	}, 1000);
 	//end 1 sec att front data
 
+	//start light / dark settings
 	$(".lg-mode").on('click', function(){
 
 		var set_lights = $(".lights").attr("id");
-
+		
 		$.post('php/lights-mode.php', {"lights":set_lights}, function(data){
 	   		
 	   		console.log(data);
@@ -1192,7 +1192,7 @@ $(document).ready(function(){
 					$(this).removeClass("color-theme");
 					$(this).addClass("text-light");
 				});
-
+				
 				$(".dropdown-menu nav ul li a").each(function(){
 					$(this).removeClass("color-theme");
 					$(this).addClass("text-light");
@@ -1213,6 +1213,11 @@ $(document).ready(function(){
 					$(this).addClass("text-light");	
 				});
 				
+				$(".dep-confirm span").each(function(){
+					$(this).removeClass("color-theme");
+					$(this).addClass("text-light");
+				});
+
 			}else{
 
 				$(".lights").attr("id", "#light");
@@ -1341,6 +1346,11 @@ $(document).ready(function(){
 					$(this).removeClass("text-light");
 					$(this).addClass("text-muted");	
 				});
+
+				$(".dep-confirm span").each(function(){
+					$(this).removeClass("text-light");
+					$(this).addClass("color-theme");
+				});
 				//$(".card-network").addClass("bg-light");
 				//$(".card-network").removeClass("bg-dark");
 			}
@@ -1348,7 +1358,7 @@ $(document).ready(function(){
 		});
 
 	});
- 	
+ 	//end
  
 });
 	
@@ -1378,7 +1388,6 @@ function toggle_about(id){
 	}
 
 }	
-
 
 function toggledd(){
 
@@ -1410,7 +1419,7 @@ function toggleddbtn(){
 	wd = $("body").innerWidth();
 
 	if(wd < 975){
-		$(".navbar-toggler").click();
+		//$(".navbar-toggler").click();
 	}
 
 	$(".hr").click();
@@ -1913,6 +1922,8 @@ function main_change(){
 		$(".col-win-pack-info-dt nav ul").attr("class", "");
 		//end
 
+		$(".daily-winners").css({"width": "90%", "margin": "0px auto"});
+
 		//start remove set class for plans div
 		$(".sp-mg-plan:eq(0)").show();
 		$(".sp-mg-plan:eq(1)").show();
@@ -2019,6 +2030,8 @@ function main_change(){
 		
 		}
 		
+		$(".daily-winners").css({"width": "100%", "margin": "0px"});
+
 		/**/
 
 		//<i aria-hidden="true" class="fa fa-3x fa-angle-left text-primary" style="position: absolute;top: 604px; left: -48px; z-index: 10000;/*! background: #ccc; */margin: 0p;margin: 0px;padding: 0px;left: 81px;z-index: 10000;"></i> left
@@ -2069,6 +2082,8 @@ function main_change(){
 
 		}
 		//end
+
+		$(".daily-winners").css({"width": "100%", "margin": "0px auto"});
 
 		//start remove set class for plans div
 		$(".sp-mg-plan:eq(0)").show();

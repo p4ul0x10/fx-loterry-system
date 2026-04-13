@@ -770,115 +770,6 @@ function enable_prot(prot, type){
 
 }
 
-function btncalc(id){
-
-	$(".modal-calc").toggle();
-
-	mobile_wd = $("body").width();
-
-	if(id == 0){
-
-		options = "<select id='mod_started'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);' selected>Starter 4 %</option>"+
-                      "<option title='advanced' class='text-primary' onclick='selected_op(1)'>Advanced 5.5 %</option>"+
-                      "<option title='premium' class='text-primary' onclick='selected_op(2)'>Premium 7 %</option>"+
-                    "</select>";
-		$(".box-option").html(options);
-		
-		$("select option:eq(0)").attr("title", "started checked");
-		$("select option:eq(1)").attr("title", "advanced");
-		$("select option:eq(2)").attr("title", "premium");
-		$(".return-calc").text("Min $5");
-
-		if(mobile_wd < 1000){
-			$("select option:eq(1)").hide();
-			$("select option:eq(2)").hide();
-		}
-
-	}else if(id == 1){
-		
-		options = "<select id='mod_advanced'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);'>Starter 4 %</option>"+
-                      "<option title='advanced' class='text-primary' onclick='selected_op(1)' selected>Advanced 5.5 %</option>"+
-                      "<option title='premium' class='text-primary' onclick='selected_op(2)'>Premium 7 %</option>"+
-                    "</select>";
-		$(".box-option").html(options);
-
-		$("select option:eq(0)").attr("title", "started");
-		$("select option:eq(1)").attr("title", "advanced checked");
-		$("select option:eq(2)").attr("title", "premium");
-		$(".return-calc").text("Min $25");
-
-		if(mobile_wd < 1000){
-			$("select option:eq(0)").hide();
-			$("select option:eq(2)").hide();
-		}
-
-	}else if(id == 2){
-		
-		options = "<select id='mod_premium'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);'>Starter 4 %</option>"+
-                      "<option title='advanced' class='text-primary' onclick='selected_op(1)'>Advanced 5.5 %</option>"+
-                      "<option title='premium' class='text-primary' onclick='selected_op(2)' selected>Premium 7 %</option>"+
-                    "</select>";
-		$(".box-option").html(options);
-
-		$("select option:eq(0)").attr("title", "started");
-		$("select option:eq(1)").attr("title", "advanced");
-		$("select option:eq(2)").attr("title", "premium checked");
-		$(".return-calc").text("Min $1000");
-
-		if(mobile_wd < 1000){
-	
-			$("select option:eq(1)").hide();
-			$("select option:eq(0)").hide();
-	
-		}
-	
-	}
-
-	calcprofit();
-
-}
-
-function selected_op(id){
-
-	if(id == "0"){
-		
-		options = "<select id='mod_started'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);' selected>Starter 4 %</option>"+
-                      "<option title='advanced' class='text-primary' onclick='selected_op(1)'>Advanced 5.5 %</option>"+
-                      "<option title='premium' class='text-primary' onclick='selected_op(2)'>Premium 7 %</option>"+
-                    "</select>";
-        $(".box-option").html(options);
-        $(".return-calc").text("Min $5");
-		
-	}else if(id == "1"){
-
-		options = "<select id='mod_advanced'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);'>Starter 4 %</option>"+
-                      "<option title='advanced checked' class='text-primary' onclick='selected_op(1)' selected>Advanced 5.5 %</option>"+
-                      "<option title='premium' class='text-primary' onclick='selected_op(2)'>Premium 7 %</option>"+
-                    "</select>";
-		$(".box-option").html(options);
-		$(".return-calc").text("Min $25");
-		
-	}else if(id == "2"){
-	
-		options = "<select id='mod_premium'>"+
-                      "<option title='started checked' class='text-primary' onclick='selected_op(0);'>Starter 4 %</option>"+
-                      "<option title='advanced' class='text-primary' onclick='selected_op(1)'>Advanced 5.5 %</option>"+
-                      "<option title='premium checked' class='text-primary' onclick='selected_op(2)' selected>Premium 7 %</option>"+
-                    "</select>";
-		$(".box-option").html(options);
-		$(".return-calc").text("Min $1000");
-		
-	}
-
-	calcprofit();
-
-}
-
 function rm_dep_m_d(id){
 
 	id_dep = id;
@@ -1015,6 +906,14 @@ function ac_pay_dep(id){
 			 		selected_coin="PIX";
 			 	}
 			 	
+			 	get_theme = $(".lights").attr("id");
+			 
+			   	if(get_theme == "#dark"){
+			   		color_theme = "text-light";
+			   	}else{
+			   		color_theme = "color-theme";
+			   	}
+
 			 	if(selected_coin != "USDT"){
 			   		
 			   		if(selected_coin == "PIX"){
@@ -1030,14 +929,7 @@ function ac_pay_dep(id){
 						   		amount_f = amountt.toFixed(2);
 						   	}
 
-						   	get_theme = $(".lights").attr("id");
-						   	if(get_theme == "#dark"){
-						   		color_theme = "text-light";
-						   	}else{
-						   		color_theme = "color-theme";
-						   	}
-
-							add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span>payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
+							add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span class="'+color_theme+'">payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep '+color_theme+'">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div class="'+color_theme+'" style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span class="'+color_theme+'"><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
 							$("#tr"+r_id_dep).html(add_payment);
 							//end desktop mobile
 
@@ -1050,14 +942,6 @@ function ac_pay_dep(id){
 						   		amount_f = parseFloat(0.20)*parseFloat(amountt);
 						   	}else{
 						   		amount_f = str_amountt;
-						   	}
-
-						   	get_theme = $(".lights").attr("id");
-						   	
-						   	if(get_theme == "#dark"){
-						   		color_theme = "text-light";
-						   	}else{
-						   		color_theme = "color-theme";
 						   	}
 
 					   		add_payment = '<div class="dep-confirm '+color_theme+' container" id="confirm'+color_theme+'" style="width: 100% !important; min-height: 200px; overflow-y: auto !important; overflow-x: hidden; position: relative;"><span>Wallet:<br><a id="wallet_api" href="#wallet-confirmed" class="text-muted" title="wallet for deposit">'+payments['wallet']+'</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i><br>QR CODE:<br><img src="'+payments['qr']+'" width="150" height="150"></span><div style="position: absolute; left: 0px; margin: 0px auto !important;" class="col"><span>payment amount: <a id="amount_f_dep" class="text-muted" href="#amountf">'+amount_f+'</a><i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i></span><form></form><input type="text" id="prof-payment-'+r_id_dep+'" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#" style="font-size: 13px;">after pay copy and paste our confirmation code</a><br><div class="col timestamp_dep" style="position:relative; margin: 0px auto !important; font-size: 13px;">60</div><div id="return_tx" style="position: absolute;float: left;margin-left: 0%;margin-top: 3%;"></div></div></div>';
@@ -1073,6 +957,13 @@ function ac_pay_dep(id){
 			   			
 			   			$.getJSON(""+api_url+"/api/v3/ticker/price?symbol="+selected_coin+""+maincoin+"", function(data1){
 			   				
+			   				get_theme = $(".lights").attr("id");
+						   	if(get_theme == "#dark"){
+						   		color_theme = "text-light";
+						   	}else{
+						   		color_theme = "color-theme";
+						   	}
+
 							if(mode == "desktop"){			
 								
 								amountt = parseFloat($("#tr"+r_id_dep+" td:eq(2)").text());
@@ -1084,17 +975,9 @@ function ac_pay_dep(id){
 							   	}
 							   	
 							   	amount_ff = amount_f.toFixed(8);
-
-							   	get_theme = $(".lights").attr("id");
-							   	if(get_theme == "#dark"){
-							   		color_theme = "text-light";
-							   	}else{
-							   		color_theme = "color-theme";
-							   	}
-
 							   	hinfo = $("#tr"+r_id_dep).html();
 	
-								add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span>payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
+							 	add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span class="'+color_theme+'">payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep '+color_theme+'">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div class="'+color_theme+'" style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span class="'+color_theme+'"><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
 
 								$("#tr"+r_id_dep).html(hinfo);
 								$("#tr"+r_id_dep).after(add_payment);
@@ -1114,12 +997,6 @@ function ac_pay_dep(id){
 
 							   	get_theme = $(".lights").attr("id");
 						
-							   	if(get_theme == "#dark"){
-							   		color_theme = "text-light";
-							   	}else{
-							   		color_theme = "color-theme";
-							   	}
-
 					   			add_payment = '<div class="dep-confirm '+color_theme+' container" id="confirm'+color_theme+'" style="width: 100% !important; min-height: 200px; overflow-y: auto !important; overflow-x: hidden; position: relative;"><span>Wallet:<br><a id="wallet_api" href="#wallet-confirmed" class="text-muted" title="wallet for deposit">'+payments['wallet']+'</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i><br>QR CODE:<br><img src="'+payments['qr']+'" width="150" height="150"></span><div style="position: absolute; left: 0px; margin: 0px auto !important;" class="col"><span>payment amount: <a id="amount_f_dep" class="text-muted" href="#amountf">'+amount_ff+'</a><i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i></span><form></form><input type="text" id="prof-payment-'+r_id_dep+'" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#" style="font-size: 13px;">after pay copy and paste our confirmation code</a><br><div class="col timestamp_dep" style="position:relative; margin: 0px auto !important; font-size: 13px;">60</div><div id="return_tx" style="position: absolute;float: left;margin-left: 0%;margin-top: 3%;"></div></div></div>';
 
 								$(".col-10-"+r_id_dep+"").after(add_payment);
@@ -1143,17 +1020,9 @@ function ac_pay_dep(id){
 					   		amount_f = amountt;
 					   	}
 					
-					   	get_theme = $(".lights").attr("id");
-					
-					   	if(get_theme == "#dark"){
-					   		color_theme = "text-light";
-					   	}else{
-					   		color_theme = "color-theme";
-					   	}
-
 					   	hinfo = $("#tr"+r_id_dep).html();
 						
-						add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span>payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
+						add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span class="'+color_theme+'">payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep '+color_theme+'">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div class="'+color_theme+'" style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span class="'+color_theme+'"><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
 
 						$("#tr"+r_id_dep).html(hinfo);
 						$("#tr"+r_id_dep).after(add_payment);
@@ -1171,12 +1040,6 @@ function ac_pay_dep(id){
 
 					   	get_theme = $(".lights").attr("id");
 		
-					   	if(get_theme == "#dark"){
-					   		color_theme = "text-light";
-					   	}else{
-					   		color_theme = "color-theme";
-					   	}
-
 					   	add_payment = '<div class="dep-confirm '+color_theme+' container" id="confirm'+color_theme+'" style="width: 100% !important; min-height: 200px; overflow-y: auto !important; overflow-x: hidden; position: relative;"><span>Wallet:<br><a id="wallet_api" href="#wallet-confirmed" class="text-muted" title="wallet for deposit">'+payments['wallet']+'</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i><br>QR CODE:<br><img src="'+payments['qr']+'" width="150" height="150"></span><div style="position: absolute; left: 0px; margin: 0px auto !important;" class="col"><span>payment amount: <a id="amount_f_dep" class="text-muted" href="#amountf">'+amount_f+'</a><i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i></span><form></form><input type="text" id="prof-payment-'+r_id_dep+'" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#" style="font-size: 13px;">after pay copy and paste our confirmation code</a><br><div class="col timestamp_dep" style="position:relative; margin: 0px auto !important; font-size: 13px;">60</div><div id="return_tx" style="position: absolute;float: left;margin-left: 0%;margin-top: 3%;"></div></div></div>';
 					
 						$(".col-10-"+r_id_dep+"").after(add_payment);
@@ -1250,6 +1113,14 @@ function ac_pay_dep(id){
 
 				   		$.getJSON(""+api_url+"/api/v3/ticker/price?symbol="+selected_coin+"USDT", function(data1){
 
+				   			get_theme = $(".lights").attr("id");
+						   	
+						   	if(get_theme == "#dark"){
+						   		color_theme = "text-light";
+						   	}else{
+						   		color_theme = "color-theme";
+						   	}
+
 							if(mode == "desktop"){
 						
 								amountt = parseFloat($("#tr"+r_id_dep+" td:eq(2)").text());
@@ -1264,13 +1135,7 @@ function ac_pay_dep(id){
 
 							   	get_theme = $(".lights").attr("id");
 		
-							   	if(get_theme == "#dark"){
-							   		color_theme = "text-light";
-							   	}else{
-							   		color_theme = "color-theme";
-							   	}
-
-							   	add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span>payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
+								add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span class="'+color_theme+'">payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep '+color_theme+'">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div class="'+color_theme+'" style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span class="'+color_theme+'"><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
 								$("#tr"+r_id_dep).html(add_payment);
 								//end desktop mobile
 
@@ -1287,12 +1152,6 @@ function ac_pay_dep(id){
 							   	amount_ff = amount_f.toFixed(8);
 
 							   	get_theme = $(".lights").attr("id");
-
-							   	if(get_theme == "#dark"){
-							   		color_theme = "text-light";
-							   	}else{
-							   		color_theme = "color-theme";
-							   	}
 
 					   			add_payment = '<div class="dep-confirm '+color_theme+' container" id="confirm'+color_theme+'" style="width: 100% !important; min-height: 200px; overflow-y: auto !important; overflow-x: hidden; position: relative;"><span>Wallet:<br><a id="wallet_api" href="#wallet-confirmed" class="text-muted" title="wallet for deposit">'+payments['wallet']+'</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i><br>QR CODE:<br><img src="'+payments['qr']+'" width="150" height="150"></span><div style="position: absolute; left: 0px; margin: 0px auto !important;" class="col"><span>payment amount: <a id="amount_f_dep" class="text-muted" href="#amountf">'+amount_ff+'</a><i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i></span><form></form><input type="text" id="prof-payment-'+r_id_dep+'" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#" style="font-size: 13px;">after pay copy and paste our confirmation code</a><br><div class="col timestamp_dep" style="position:relative; margin: 0px auto !important; font-size: 13px;">60</div><div id="return_tx" style="position: absolute;float: left;margin-left: 0%;margin-top: 3%;"></div></div></div>';							   	
 
@@ -1317,13 +1176,7 @@ function ac_pay_dep(id){
 
 						   	get_theme = $(".lights").attr("id");
 
-						   	if(get_theme == "#dark"){
-						   		color_theme = "text-light";
-						   	}else{
-						   		color_theme = "color-theme";
-						   	}
-
-						   	add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span>payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
+							add_payment = '<div class="dep-confirm text-light container" id="confirmuox2usja" style="margin-left: 22%; padding: 7px 0px;"><div style="position: absolute; margin-top: 41px !important;margin-left: 40%;" class="col-md-6 float-right"><span class="'+color_theme+'">payment amount <a id="amount_f_dep" class="text-muted" href="#amountf">0.01071811</a> <i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></span><form></form><input type="text" id="prof-payment-uox2usja" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#">after pay copy and paste our confirmation code</a><br><div class="timestamp_dep '+color_theme+'">60</div><div id="return_tx" style="position: absolute;float: right;margin-left: 37%;margin-top: 3%;"></div></div><div class="'+color_theme+'" style="margin-top: 0px;">Wallet: <a id="wallet_api" class="text-muted" href="#wallet-confirmed" title="wallet for deposit">LLY2NBhgBCYUYucugWzDPWqczxi11MNzqu</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 10px;"></i></div><span class="'+color_theme+'"><br>QR CODE:<br><img src="images/qr-code/ltc.png" width="150" height="150"></span></div>';
 							$("#tr"+r_id_dep).html(add_payment);
 							//end desktop mobile
 						
@@ -1335,14 +1188,6 @@ function ac_pay_dep(id){
 						   		amount_f = (parseFloat(0.20)*parseFloat(amountt.toFixed(2))) / parseFloat(data1['price']);
 						   	}else{
 						   		amount_f = parseFloat(str_amountt) / parseFloat(data1['price']);
-						   	}
-
-						   	get_theme = $(".lights").attr("id");
-
-						   	if(get_theme == "#dark"){
-						   		color_theme = "text-light";
-						   	}else{
-						   		color_theme = "color-theme";
 						   	}
 
 					   		add_payment = '<div class="dep-confirm '+color_theme+' container" id="confirm'+color_theme+'" style="width: 100% !important; min-height: 200px; overflow-y: auto !important; overflow-x: hidden; position: relative;"><span>Wallet:<br><a id="wallet_api" href="#wallet-confirmed" class="text-muted" title="wallet for deposit">'+payments['wallet']+'</a><i aria-hidden="true" id="copy_wallet" class="fa fa-files-o fa-1x float-right" onclick="copy_wallet();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i><br>QR CODE:<br><img src="'+payments['qr']+'" width="150" height="150"></span><div style="position: absolute; left: 0px; margin: 0px auto !important;" class="col"><span>payment amount: <a id="amount_f_dep" class="text-muted" href="#amountf">'+amount_f+'</a><i aria-hidden="true" id="copy_amount" class="fa fa-files-o fa-1x float-right" onclick="copy_amountf();" style="position: absolute;margin-top: 2;margin-left: 5px;"></i></span><form></form><input type="text" id="prof-payment-'+r_id_dep+'" class="inptx" name="hash-dep" placeholder="tx / id de confirmação" style="width: 250px;height: 30px;border: none;padding: 0px 10px; background: #ddd;"><button type="button" id="btn-tx" onclick="btntx();" style="height: 30px;border: none;padding: 0px 4px;">Confirm</button><br><a class="text-muted" href="#" style="font-size: 13px;">after pay copy and paste our confirmation code</a><br><div class="col timestamp_dep" style="position:relative; margin: 0px auto !important; font-size: 13px;">60</div><div id="return_tx" style="position: absolute;float: left;margin-left: 0%;margin-top: 3%;"></div></div></div>';						  	
@@ -1359,88 +1204,12 @@ function ac_pay_dep(id){
 		 	}
 		 	
 		});
-		
-		//start
-		if(mode == "desktop"){
 
-			/*search_id = "con-"+""+r_id_dep;
-			itens = $(".dep-list");
-			search_tr = "tr"+""+r_id_dep;
-			x = 0;
-			
-			for (var i = 0; i < itens.length; i++) {
-				
-				if($(".dep-list:eq("+i+")").attr("id") != search_tr){
-					x++;
-				}else{
-					i = itens.length;
-				}
-			}
-			
-			setTimeout(function() {
-				top_mb = $(".mb").attr("id");
-				top_table = 100;
-				document.getElementsByClassName("mb")[0].scroll({top: top_table,left: 0,behavior: "smooth"}); 		
-			}, 2000);*/
-		
-		}
-		//end
-
-		/*$.post("php/rel_itens.php",{"id_charnum":r_id_dep}, function(data_scroll){
-
-			top_table = parseFloat(63) * parseFloat(data_scroll);
-		
-			document.getElementsByClassName("mb")[0].scroll({top: top_table,left: 0,behavior: "smooth"}); 
-			
-		});*/
-			
 	}else{ //close payment settings
 
 		idr_id_dep = "close"+r_id_dep;
 		rmconfirm(idr_id_dep);
 	
 	}
-
-	
 	//end
 }
-
-/*function calcprofit(){
-
-	
-	if($(".valcalc").val() >= 5 && $("select option:eq(0)").attr("title") == "started checked" || $(".valcalc").val() >= 5 && $("select").attr("id") == "mod_started"){
-
-		var calc_profit_day = ($(".valcalc").val() * 4 / 100).toFixed(2);
-		var calc_profit_month = (calc_profit_day * 30).toFixed(2);
-		$(".return-calc").text("Day $ "+calc_profit_day+" Month $ "+calc_profit_month);
-	
-	}else if($(".valcalc").val() < 5 && $("select option:eq(0)").attr("title") == "started checked" || $(".valcalc").val() < 5 && $("select").attr("id") == "mod_started"){
-	
-		$(".return-calc").text("Min $5");
-	
-	}
-
-	if($(".valcalc").val() >= 25 && $("select option:eq(1)").attr("title") == "advanced checked" || $(".valcalc").val() >= 25 && $("select").attr("id") == "mod_advanced"){
-	
-		var calc_profit_day = ($(".valcalc").val() * 5.5 / 100).toFixed(2);
-		var calc_profit_month = (calc_profit_day * 30).toFixed(2);
-		$(".return-calc").text("Day $ "+calc_profit_day+" Month $ "+calc_profit_month);
-	
-	}else if($(".valcalc").val() < 25 && $("select option:eq(1)").attr("title") == "advanced checked" || $(".valcalc").val() < 25 && $("select").attr("id") == "mod_advanced"){
-	
-		$(".return-calc").text("Min $25");
-	
-	}
-
-	if($(".valcalc").val() >= 1000 && $("select option:eq(2)").attr("title") == "premium checked" || $(".valcalc").val() >= 1000 && $("select").attr("id") == "mod_premium"){
-
-		var calc_profit_day = ($(".valcalc").val() * 7 / 100).toFixed(2);
-		var calc_profit_month = (calc_profit_day * 30).toFixed(2);
-		$(".return-calc").text("Day $ "+calc_profit_day+" Month $ "+calc_profit_month);
-
-	}else if($(".valcalc").val() < 1000 && $("select option:eq(2)").attr("title") == "premium checked" || $(".valcalc").val() < 1000 && $("select").attr("id") == "mod_premium"){
-
-		$(".return-calc").text("Min $1000");
-
-	}
-}*/
