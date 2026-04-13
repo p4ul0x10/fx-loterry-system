@@ -6,9 +6,9 @@ if($host == "POST"){
 
 session_start();
 include "php/conn.php";
-ini_set( 'display_errors', 1);
-
 include "php/functions.php";
+
+ini_set( 'display_errors', 1);
 ?>
 <!doctype html>
 <html lang="en">
