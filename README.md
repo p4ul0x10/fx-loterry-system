@@ -7,7 +7,7 @@
 #Tem como deia um sistema de apostas  baseado em loteria com criptomoedas sendo meio de pagamentos (depositos e saques).
 #Projeto ainda em construção...
 
-Link de teste: https://fxloterry.gamer.gd/
+Link de teste:https://fxloterry.gamer.gd/
 login:pauloricardo_honorio@hotmail.com  
 password:123123
 --------------------------------------------
