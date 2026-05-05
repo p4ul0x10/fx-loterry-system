@@ -8,3 +8,6 @@
 #Projeto ainda em construção...
 
 Link de teste: https://fxloterry.gamer.gd/
+login:pauloricardo_honorio@hotmail.com  
+password:123123
+--------------------------------------------
