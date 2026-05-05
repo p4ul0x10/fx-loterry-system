@@ -8,8 +8,6 @@ if($host == "GET"){
 	
 include_once "../conn.php";
 
-session_start();
-
 $email = $_SESSION['email'];
 $get_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email ='$email'");
 $array_user = mysqli_fetch_array($get_user);

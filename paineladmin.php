@@ -1,16 +1,17 @@
-<?php session_start();
+<?php 
+
 include "php/conn.php";
 include "php/functions.php";
 
-    if (!isset($_SESSION['email'])) {
-      echo "<script>setTimeout(function(){
-      location.href='index.php';
-     }, 1);</script>";
-     session_destroy();
-     exit();
-    }else{
-      
-    }
+if (!isset($_SESSION['email'])) {
+  echo "<script>setTimeout(function(){
+  location.href='index.php';
+ }, 1);</script>";
+ session_destroy();
+ exit();
+}else{
+  
+} 
 ?>
 <!doctype html>
 <html lang="en">

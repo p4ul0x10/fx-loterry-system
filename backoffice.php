@@ -1,17 +1,20 @@
-<?php session_start();
-ini_set( 'display_errors', 0);
+<?php 
 
 include "php/conn.php";
 include "php/functions.php";
 include "php/theme-mod/mode_class.php";
+include "php/security_sys/security_adds.php";
 //include "php/loterry/loterry-gen.php";
 
 if (!isset($_SESSION['email'])) {
-  echo "<script>setTimeout(function(){
+
+ echo "<script>setTimeout(function(){
   location.href='index.php';
  }, 1);</script>";
+
  session_destroy();
  exit();
+
 }else{
   
 }
@@ -157,14 +160,7 @@ $mode_theme_text = text_color($con);
               $array_win_lt = mysqli_fetch_array($get_ltwin_unconfirmed);
               $total_acc_unconfirmed = number_format($array_dep['qtd'], 2, ".", "");
               echo "$".$total_acc_unconfirmed." pending"; ?><!--$20 pending--></p></a></strong>
-              <div class="col-12">
-                <div class="pr-1">
-                  <button type="button" class="col-6 btn float-left bg-theme text-light c-deposito-f btncc wd">Deposit founds</button>
-                </div>
-                <div class="pl-1">
-                  <button type="button" class="col-6 btn float-right bg-theme text-light c-deposito btncc wd">Buy packages</button>
-                </div>
-              </div>
+              <button type="button" class="col-12 btn float-left bg-theme text-light c-deposito-f btncc wd m-auto">Deposit founds</button>
             </div>
             <div class="col-info-sys col-md-6 col-md-6-m3 float-right card <?php echo $mode_theme_bg[0]; ?> pdg-bo-info">
               <strong class="txt <?php echo $mode_theme_text[0]; ?> ini-top" style="height: 41.5px;"><!--Ganho diário:  <a href="#">--><?php //ganho_diario(); ?> <!--%</a><a href="#">--><?php user_coin(); ?><!--</a>--></strong>
@@ -324,7 +320,7 @@ $mode_theme_text = text_color($con);
                         while ($last_buyed = mysqli_fetch_array($query_tkt_b)){
                         
                         ?>
-                       <li class="box-l btn float-left bg-success text-light ml-1 mr-1 mb-1">
+                       <li class="box-l btn float-left bg-success text-light ml-1 mr-1 mb-1 btn-sm">
                           <a href="#tkts-line" id="<?php echo $last_buyed['rel_package']; ?>" class="lt-tkt-box-b" onclick="modal_lt_d(id);">+ <?php echo $last_buyed['value']; ?> <img src="open-iconic-master/png/tag-3x.png" width="10px" height="10px">
                           </a> 
                         </li>
@@ -625,7 +621,7 @@ $mode_theme_text = text_color($con);
                 lt_date2 = lt_date.charAt(4);
                 lt_date = lt_date1+lt_date2;
               }
-              alert(lt_date);
+
              /* $.post("php/att_sesssion_lt.php",{"mode":mode_selected, "last_showed": lt_date}, function(data){
 
               });*/
@@ -703,11 +699,12 @@ $mode_theme_text = text_color($con);
         
                   f_t = 0;
                   f_v = 0;
+                  
                   pgiv = 0;
             
                 }
                 
-                console.log(pg_mode+" "+status+" "+f_t+" "+f_v+" "+bg_theme);
+                //console.log(pg_mode+" "+status+" "+f_t+" "+f_v+" "+bg_theme);
 
                 //start att num pages default or filter
                 $.post("php/att/att_pgs.php", {"pg_mode":pg_mode, "status":status, "f_t":f_t, "f_v":f_v, "bg_theme":bg_theme, "pgiv":pgiv}, function(data){

@@ -1,5 +1,5 @@
 <?php
-include ('backoffice.php');
+include_once ('php/conn.php');
 
 $token = $_SESSION['email'];
 if(isset($token)) {

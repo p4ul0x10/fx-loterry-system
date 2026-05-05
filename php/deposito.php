@@ -1,5 +1,4 @@
-<?php session_start();
-
+<?php 
 	$host = $_SERVER['REQUEST_METHOD'];
 	if($host == "GET"){
 		exit();
@@ -27,12 +26,11 @@
  	$coin_b = true;
  	$insert_data = true;
 
-	/*echo "<p class='text-primary'>nome: ".$nome." email: ".$email." cpf".$cpf = "cpf teste"." valor".$valor." data".$data;
-	echo $subject." plan: ".$plan;
-	echo "true";
-	exit();
-	*/
-
+	//echo "<p class='text-primary'>nome: ".$nome." email: ".$email." cpf".$cpf = "cpf teste"." valor".$valor." data".$data;
+	//echo $subject." plan: ".$plan;
+	
+	//exit();
+	
  	if(strlen($nome) <= 16){
 		$namestrl = true;
 	}else{
@@ -47,7 +45,7 @@
 	
 	if(!isset($plan) || $plan == ""){ $plan = "buy-package"; }
 
- 	if($plan != "buy-package" && $plan != "founds" && $plan != "tkt"){
+ 	if($plan != "buy-package" && $plan != "Founds" && $plan != "tkt"){
 
  		echo $plan."Invalid plan !";
  		$plan_b = false;
@@ -79,6 +77,7 @@
  		}
 
  		$plan = "Founds";
+ 	
  	}
 
  	if($coin == "pix-nubank"){ $coin = "pix"; }
@@ -226,7 +225,7 @@
 	 		exit();
 	 	}
 
-	 	if($plan == "founds" && $valor < 5) {
+	 	if($plan == "Founds" && $valor < 5) {
 	 		echo "<p class='text-danger'>Min value for deposit $ <b class='text-warning'>$5</b></p>";
 	 		exit();
 	 	}
@@ -249,18 +248,18 @@
 	 	$confirm_dep = "false";
 
 	 	if($plan != "tkt"){
-	 		
-	 		if($plan != "Founds" || $plan != "founds"){
+
+	 		if($plan != "Founds" && $plan != "founds"){
 	 			$plan = "Package";
 	 		}
 			
-			$total_rest_buy = $total_acc - $valor;
+			/*$total_rest_buy = $total_acc - $valor;
 
 	 		if($total_rest_buy < 0){
 	 			exit();
-	 		}
+	 		}*/
 
-	 		$deposito = mysqli_query($con, "INSERT INTO deposits (quantidade,id_user,data,nome,address,status,type_dep,proto) VALUES ('$valor','$id_user','$data','$nome','$cpf','1','$plan','$prot')");
+	 		$deposito = mysqli_query($con, "INSERT INTO deposits (quantidade,id_user,data,nome,address,status,type_dep,proto) VALUES ('$valor','$id_user','$data','$nome','$cpf','0','$plan','$prot')");
 	 		$get_last_dep = mysqli_query($con, "SELECT * FROM deposits WHERE id_user = '$id_user' ORDER BY id DESC LIMIT 1");
 	 		$array_id_last_dep = mysqli_fetch_array($get_last_dep);
 	 		$last_dep_id = $array_id_last_dep['id'];
@@ -368,11 +367,11 @@
 		 			
 		 			$tkts = $valor / 0.2;
 		 			
-		 			echo "<p class='dv color-theme'>Deposit confirmed, ".$tkts." Buyed <i class='fa fa-check'></i></p><br>
+		 			echo "<p class='dv color-theme'>Deposit confirmed, $".$valor." <i class='fa fa-check'></i></p><br>
 		 			<small class='plan-deposit color-theme'>Check our deposits section, for more info.</small>";
 		 			
 		 			$subject = "deposit";
-			    	include "email/emails_send.php";
+			    	//include "email/emails_send.php";
 			    
 				}
 
@@ -568,7 +567,7 @@
 				$select_buy_tkt = mysqli_query($con, "SELECT * FROM loterry_tkt_buyed WHERE rel_package='$id_user_val' ORDER BY id DESC LIMIT 1");
 			
 				$array_id_last_dep = mysqli_fetch_array($select_buy_tkt);
-		 		$last_dep_id = base64_encode($id_user_val); //$id_dep."-".$array_id_last_dep['id'];
+		 		$last_dep_id = base64_encode($id_user_val); 
 
 				mysqli_query($con, "INSERT INTO net_protos (id_dep,net) VALUES ('$last_dep_id','$prot')");	
 		 		//end 
@@ -632,9 +631,10 @@
 			 			echo "<img src='".$url_qr."' width='150px' height='150px' alt='qr code'><br>deposit valid, waiting payment <i class='fa fa-check'></i></p><br><small class='plan-deposit'>Check our deposits section, for more info.</small>";
 			 			
 			 			$subject = "deposit";
-				    	include "email/emails_send.php";
+				    	//include "email/emails_send.php";
 				    
 					}
+				
 				}
 				//end
 		 		
@@ -675,12 +675,12 @@
 		 		echo "<p class='text-danger'>Error while process your request, try again...</p>";
 		 	
 		 	}
+	 	
 	 	}	
 	 
-	 	//$acc_add = mysqli_query($con, "UPDATE usuarios SET total_acc=total_acc+$valor WHERE email='$email'"); 
-
  	}else{
  		
  		echo "null";
+
  	}
 ?>

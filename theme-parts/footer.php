@@ -72,10 +72,25 @@
   </div>
 </footer>
 <script>
+
   //Instantly scroll to the top-left corner
   window.scrollTo(0, 0);
 
   //Add height for init loading page      
+  const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
+ 
+  $(".hnav-mt").click(function() {
+
+    if(viewportWidth < 992){
+
+      $(".navbar-collapse").toggle();
+      $(".navbar-collapse").attr("class", "navbar-collapse collapse");
+        
+    }   
+  
+  });
+
   $(".fix").css({"height": viewportHeight+"px"});
+
 </script>

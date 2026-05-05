@@ -11,7 +11,7 @@
 ?>
 <?php if($rows_lt >= 1){ ?> <div class="modal modal-deptkt text-primary" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-tables" role="document">
-    <div class="modal-content">
+    <div class="modal-content <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header">
         <h5 class="modal-title text-light" align="center">Tickets Buyed</h5>
         <i class="fa-dep-exclamation fa fa-info" aria-hidden="true"></i>
@@ -180,7 +180,7 @@ function maxtkt(){
 <?php if($rows_rel_dep >= 1){ ?>
 <div class="modal modal-tkt-buy text-primary mdp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document" style="top: 0px !important;">
-    <div class="modal-content modal-contentp">
+    <div class="modal-content modal-contentp <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header">
         <h5 class="modal-title text-light" align="center">Spend ticket's</h5>
         <i class="fa-dept-exclamation fa fa-info" aria-hidden="true"></i>

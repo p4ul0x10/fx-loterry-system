@@ -4,7 +4,6 @@ if($host == "GET"){
 	exit();
 }
 
-session_start();
 include "../conn.php";
 
 $email = $_SESSION['email'];

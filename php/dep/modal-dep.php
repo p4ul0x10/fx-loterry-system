@@ -30,7 +30,6 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
       if(width < 850){
       
         type_modal = "mobile";
-  
         $(".modal-depositar").css({"top":"0px"});
         
         if(width > 800){ //tablet show
@@ -43,10 +42,29 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
         }
 
       }else{
+        
+        if(width > 1024){
+        
+          type_modal = "desktop";
+          flex_wrap = "wrap";
       
-        type_modal = "desktop";
-        flex_wrap = "wrap";
+        }else{
+         
+          type_modal = "mobile";
+          $(".modal-depositar").css({"top":"0px"});
+        
+          if(width > 800){ //tablet show
 
+            flex_wrap = "initial";
+
+          }else{ //smartphone show
+
+            flex_wrap = "wrap";
+          
+          }
+        
+        }
+      
       }
 
       if(location.href.indexOf("modal_deposits") <= 1){
@@ -106,8 +124,7 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
 
       }
 
-      wd_w = window.innerWidth;
-      ajust_card(wd_w);
+      //wd_w = window.innerWidth;
     
     });
 
@@ -127,7 +144,23 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
     
     }else{
 
-      flex_wrap = "wrap";
+      if(width > 1024){
+        
+        flex_wrap = "wrap";
+    
+      }else{
+       
+        if(width > 800){ //tablet show
+
+          flex_wrap = "initial";
+
+        }else{ //smartphone show
+
+          flex_wrap = "wrap";
+        
+        }
+      
+      }
 
     }
 
@@ -542,60 +575,15 @@ include "localhost".$_SERVER['REQUEST_URI']."/php/theme-mod/mode_class.php";
       } 
 
     });*/
-
-    wd_w = window.innerWidth;
-    ajust_card(wd_w);
-    
+ 
     //window.history.pushState(initialState, '', location.href+"&mod_show=");
   }
 
-  function ajust_card(div_width) {
-      
-    alert("enload");  
-    //start ajust data on card -> deposits mobile (smartphone)
-    wd_col = $(".col-mb-dep-h").width();
-    $(".col-12 .col-sm-12").css({"margin-top": "2%"});
-
-    if(div_width < 768){
-      
-      wd_li = wd_col / 3;
-      wd_li2 = wd_col / 2;
-      
-      for(ic = 0; ic < 5; ic++){
-       
-        for(i = 0; i < 3; i++){
-          $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(0) li:eq("+i+")").css({"width": wd_li});
-        }
-
-        for(i = 0; i < 2; i++){
-          $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(1) li:eq("+i+")").css({"width": wd_li2});
-        }
-      
-      }
-
-    }else if(div_width >= 768 && div_width <= 1024){
-      
-      wd_li = wd_col / 5.1;
-      
-      for(var ic = 0; ic < 5; ic++) {
-          
-        for (var i = 0; i < 3; i++) {
-          $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(0) li:eq("+i+")").css({"width": wd_li});
-        }
-
-        for (var i = 0; i < 2; i++) {
-          $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(1) li:eq("+i+")").css({"width": wd_li});
-        }
-
-      }
-    
-    }
-    //end
-  } 
+  
 </script>
 <div class="modal modal-depinv text-primary" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-tables" role="document">
-    <div class="modal-content">
+    <div class="modal-content <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header bg-theme">
         <h5 class="modal-title text-light" align="center">Deposits</h5>
         <i class="fa-dep-exclamation fa fa-question" aria-hidden="true"></i>
@@ -886,7 +874,7 @@ $(document).ready(function() {
 <!-- start modal buy packages -->
 <div class="modal modal-depositar <?php text_color(); ?> mdp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document" style="top: 0px !important;">
-    <div class="modal-content modal-contentp">
+    <div class="modal-content modal-contentp <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header">
         <h5 class="modal-title text-light" align="center">Make a deposit</h5>
         <i class="fa-depm-exclamation fa fa-question" aria-hidden="true"></i>
@@ -952,7 +940,7 @@ $(document).ready(function() {
           </div>
           <div class="form-group display-none">
             <label>Amount of investment</label>
-            <input type="text" class="form-control text-success selected_plan float-right" name="plan-dep" id="plan_selected" value="buy-package" style="display: none;">
+            <input type="text" class="form-control color-theme selected_plan float-right" name="plan-dep" id="plan_selected">
             <input type="text" class="form-control text-success selected_coin float-right" name="coin-dep" id="coin_selected" style="display: none;">
             <input type="text" class="form-control color-theme deposito-user float-right" name="deposito-user" id="deposito-user" placeholder="Amount in $">
             <div class="row">

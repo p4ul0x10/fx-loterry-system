@@ -3,8 +3,6 @@
 	ini_set( 'display_errors', 0);
 	include "../conn.php";
 
-	session_start();
-
 	if(isset($_POST['gp_check'])){
 		$id_user = $_SESSION['id_user'];
 		mysqli_query($con, "UPDATE user_config SET gp_true = 'false' WHERE id_user = $id_user");

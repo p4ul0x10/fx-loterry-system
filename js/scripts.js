@@ -222,11 +222,11 @@ $(document).ready(function(){
 	   		total_acc = $(".total-acc-user").text();
 	   		total_buy = parseFloat(total_acc) - parseFloat($(".deposito-user").val());
 
-	   		if(total_buy < 0 && $("#plan_selected").val() != "founds"){
+	   		if(total_buy < 0 && $("#plan_selected").val() != "Founds"){
 	   			plan_b = false;
 	   		}
 	   		
-	   		if($("#plan_selected").val() == "founds"){
+	   		if($("#plan_selected").val() == "Founds"){
 
 		 		plan = "founds";
 		 		if($(".deposito-user").val() < 5){
@@ -276,6 +276,7 @@ $(document).ready(function(){
 							$(".return-deposito").html(data);
 							$(".concluir-deposito").hide();
 						}, 1500);
+		   			
 		   			});
 
 				}).fail(function( dat, textStatus, error ) {
@@ -364,6 +365,7 @@ $(document).ready(function(){
 			   			if($(".prot:eq("+i+")").attr("class") == "prot bg-theme"){
 			   				prot = $(".prot:eq("+i+")").attr("id");
 			   			} 
+			
 			   		}
 
 					$(".return-deposito").html("<p class='alert-success'>Processing your deposit <i class='fa  fa-pulse'></i></p>");
@@ -425,9 +427,11 @@ $(document).ready(function(){
 
 		   		count_prot = $(".prot").length;
 		   		for(i = 0; i < count_prot+1; i++){
+		   	
 		   			if($(".prot:eq("+i+")").attr("class") == "prot bg-theme"){
 		   				prot = $(".prot:eq("+i+")").attr("id");
 		   			} 
+		   	
 		   		}
 
 				//$(".return-deposito p").remove();
@@ -453,11 +457,13 @@ $(document).ready(function(){
 
 		   		count_prot = $(".prot").length;
 		   		for(i = 0; i < count_prot+1; i++){
+		   	
 		   			if($(".prot:eq("+i+")").attr("class") == "prot bg-theme"){
 		   				prot = $(".prot:eq("+i+")").attr("id");
 		   			} 
+		   	
 		   		}
-		   		alert(convert_current);
+		   		
 				//$(".return-deposito p").remove();
 				$(".return-deposito").append("<p class='alert-success'>Processing your deposit <i class='fa  fa-pulse'></i></p>");
 	   			$.post('php/deposito.php', {"nome":nome,"valor":quantidade,"email":email,"subject":type,"coin":coin,"plan":plan,"prot":prot,"convert":convert_current}, function(data){
@@ -466,7 +472,9 @@ $(document).ready(function(){
 						$(".return-deposito").html(data);
 						$(".concluir-deposito").hide();		
 					}, 1500);
+		   	
 		   		});
+		   	
 		   	}
 			
 			$(".choose-coin-dep a").each(function() {
@@ -494,10 +502,12 @@ $(document).ready(function(){
    	$(".modal-depositar").show();
    	$(".modal-depositar .modal-title").text("Make a deposit founds");
    	$(".pg").hide();
-   	$("#plan_selected").val("founds");
-   	
-   	//$(".modal-depositar .form-group:eq(3)").hide();
 
+   	$(".formdepositar .form-group:eq(4)").show();
+   	
+	$("#plan_selected").prop("value", "Founds");
+	$("#plan_selected").prop("disabled", true);
+   	
 	if($(".lights").attr("id") == "#light"){
 			
 		$(".modal-content").removeClass("bg-dark");
@@ -537,13 +547,15 @@ $(document).ready(function(){
 	   		plan_b = true;
 	   		amount = $(".deposito-user").val();
 	   	
-	   		if($("#plan_selected").val() == "founds"){ //for founds deposits
+	   		if($("#plan_selected").val() == "Founds"){ //for founds deposits
+		 	
 		 		if($(".deposito-user").val() < 5){
 		 			$(".return-deposito").append("<p class='text-warning'>Min for "+Plan+" $ 5</p>");
 		 			$(".concluir-deposito").hide();
 		 		}else if($(".deposito-user").val() >= 5){
 		 			$(".return-deposito").html("<p class='alert-success'>Deposit pre-valided");
 		 			$(".concluir-deposito").show();
+		 			$(".concluir-deposito").text("Confirm here");
 		 		}
 
 		 	}else{
@@ -552,7 +564,7 @@ $(document).ready(function(){
 		   		total_buy = parseFloat(total_acc) - parseFloat($(".deposito-user").val());
 		   		v_tkt = parseFloat($(".deposito-user").val()) / parseFloat(0.2);
 
-		   		if(total_buy >= 0 && $("#plan_selected").val() != "founds"){
+		   		if(total_buy >= 0 && $("#plan_selected").val() != "Founds"){
 
 		   			$(".formdepositar .form-group:eq(4) .row span:eq(1)").remove();
 		   			$(".formdepositar .form-group:eq(4) .row span").after('<span class="plan-deposit-mt-2">Tickets: <p class="cv text-muted total-tkt-buy" style="display: inline-block;">'+v_tkt+'</p> <i class="fa fa-cubes fa-1x text-muted" aria-hidden="true"></i></span>');
@@ -571,7 +583,7 @@ $(document).ready(function(){
 
 		 	res = parseFloat(str_ml) - parseFloat(du);
 		 
-		 	if(res < 0 && Plan != "founds"){
+		 	if(res < 0 && Plan != "Founds"){
 		 	
 		 		$(".return-deposito").html("<p class='alert-danger'>Deposit amount invalid, max limit "+ml+"</p>");
 		 		$(".concluir-deposito").hide();
@@ -921,7 +933,7 @@ $(document).ready(function(){
 	 	tacca = $(".ini-top:eq(1) a:eq(0) p").text();
 	 	taccap = $(".ini-top:eq(1) a:eq(1) p").text();
 
-	   	$.post("php/att/t1.php",{"tacc":tacc, "taccp":taccp, "tacca":tacca, "taccap":taccap, "tprofit":tprofit}, function(data){
+	   /* $.post("php/att/t1.php",{"tacc":tacc, "taccp":taccp, "tacca":tacca, "taccap":taccap, "tprofit":tprofit}, function(data){
 
 	   		att_json = JSON.parse(data);
 
@@ -931,7 +943,7 @@ $(document).ready(function(){
 	   		if(att_json[3] != 0){ $(".ini-top:eq(1) a:eq(1) p").text(att_json[3]); }
 	   		if(att_json[4] != 0){ $(".total-profit-user").text(att_json[4]); }
 	   		
-	   	});
+	   	}); */
 	 	//end att pt1
 
 	 	//start att pt2
@@ -1076,6 +1088,25 @@ $(document).ready(function(){
 				}
 			
 			}	
+
+		}
+		//end
+
+		//start ajust render on 1024 px or less
+		if($(".col-mb-dep-h").length > 0 && $(".col-mb-dep-h").attr("class") == "col-mb-dep-h row" || $(".col-mb-with-h").length > 0 && $(".col-mb-with-h").attr("class") == "col-mb-with-h row"){
+			
+			$(".container-deps").css({"display":"block"});
+			$(".container-withs").css({"display":"block"});
+			
+			wd = window.innerWidth;
+            ajust_card(wd);
+            
+           	$(".col-mb-dep-h").each(function(){
+            	$(this).attr("class", "col-mb-dep-h row cr-style");
+            });
+           	$(".col-mb-with-h").each(function(){
+            	$(this).attr("class", "col-mb-with-h row cr-style");
+            });
 
 		}
 		//end
@@ -1503,8 +1534,22 @@ function network_banners(){
 
 function ajust_card(div_width) {
   
-	//start ajust data on card -> deposits mobile (smartphone)
-	wd_col = $(".col-mb-dep-h").width();
+	//start ajust data on card -> deposits and withdraws mobile (smartphone)
+	
+	if($(".col-mb-dep-h").length > 0){ //exist dep show request
+		wd_col = $(".col-mb-dep-h").width();
+		div_class = ".col-mb-dep-h";
+		ul_type = "ul-dep";
+		console.log("d");
+	}
+
+	if($(".col-mb-with-h").length > 0){ //exist with show request
+		wd_col = $(".col-mb-with-h").width();
+		div_class = ".col-mb-with-h";
+		ul_type = "ul-with";
+		console.log("w "+wd_col);
+	}
+
 	$(".col-12 .col-sm-12").css({"margin-top": "2%"});
 
 	wd_li = wd_col / 3;
@@ -1518,29 +1563,29 @@ function ajust_card(div_width) {
 	  for(ic = 0; ic < 5; ic++){
 	   
 	    for(i = 0; i < 3; i++){
-	      $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(0) li:eq("+i+")").css({"width": wd_li});
+	      $(div_class+":eq("+ic+") ."+ul_type+":eq(0) li:eq("+i+")").css({"width": wd_li});
 	    }
 
 	    for(i = 0; i < 2; i++){
-	      $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(1) li:eq("+i+")").css({"width": wd_li2});
+	      $(div_class+":eq("+ic+") ."+ul_type+":eq(1) li:eq("+i+")").css({"width": wd_li2});
 	    }
 	  
 	  }
 
 	}else if(div_width >= 768 && div_width <= 1024){
 		
-		wd_li = wd_col / 5.1;
-	    
-	    for(var ic = 0; ic < 5; ic++) {
+		wd_li = wd_col / 5.5;
+
+	    for(var ic = 0; ic < 5; ic++){
 	      
-	      for (var i = 0; i < 3; i++) {
-	        $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(0) li:eq("+i+")").css({"width": wd_li});
+	      for(var i = 0; i < 3; i++){
+	        $(div_class+":eq("+ic+") ."+ul_type+":eq(0) li:eq("+i+")").css({"width": wd_li+"px"});
 	      }
 
-	      for (var i = 0; i < 2; i++) {
-	        $(".col-mb-dep-h:eq("+ic+") .ul-dep:eq(1) li:eq("+i+")").css({"width": wd_li});
+	      for(var i = 0; i < 2; i++){
+	        $(div_class+":eq("+ic+") ."+ul_type+":eq(1) li:eq("+i+")").css({"width": wd_li+"px"});
 	      }
-
+	    
 	    }
 
 	}
@@ -1553,8 +1598,6 @@ function main_change(){
 	ht = window.innerHeight;
 	hb = $("body").height();
 
-    ajust_card(wd);
-   
 	if($(".net-resources:eq(0)").attr("id") != "net-mobile"){
 
         //start left right graph btn sets 
@@ -1698,9 +1741,9 @@ function main_change(){
 		$(".box-l img").attr("width", "10px");
 		$(".box-l img").attr("height", "10px");
 
-		$(".box-l").each(function() {
+		/*$(".box-l").each(function() {
 			$(this).removeClass("btn-sm");	
-		});
+		});*/
 		//end
 
 	}else if(wd >= 850){
@@ -1723,9 +1766,9 @@ function main_change(){
 		$(".box-overflow-xltb").css({"top": "0px"});
 
 		$(".lt-tkt-box").css({"padding":"auto"});
-		$(".box-l").each(function() {
+		/*$(".box-l").each(function() {
 			$(this).addClass("btn-sm");	
-		});
+		});*/
 
 		if(btheme == "text-center bg-theme-d"){
 			$("#box-menu table").removeClass("color-theme");
@@ -1922,8 +1965,6 @@ function main_change(){
 		$(".col-win-pack-info-dt nav ul").attr("class", "");
 		//end
 
-		$(".daily-winners").css({"width": "90%", "margin": "0px auto"});
-
 		//start remove set class for plans div
 		$(".sp-mg-plan:eq(0)").show();
 		$(".sp-mg-plan:eq(1)").show();
@@ -2030,8 +2071,6 @@ function main_change(){
 		
 		}
 		
-		$(".daily-winners").css({"width": "100%", "margin": "0px"});
-
 		/**/
 
 		//<i aria-hidden="true" class="fa fa-3x fa-angle-left text-primary" style="position: absolute;top: 604px; left: -48px; z-index: 10000;/*! background: #ccc; */margin: 0p;margin: 0px;padding: 0px;left: 81px;z-index: 10000;"></i> left
@@ -2083,8 +2122,6 @@ function main_change(){
 		}
 		//end
 
-		$(".daily-winners").css({"width": "100%", "margin": "0px auto"});
-
 		//start remove set class for plans div
 		$(".sp-mg-plan:eq(0)").show();
 		$(".sp-mg-plan:eq(1)").show();
@@ -2127,7 +2164,7 @@ function main_change(){
 
 	//start current lt status -> index page
 	if(wd < 768){
-	
+		
 		$(".current-loterry-container nav ul li").addClass("lt-current-status-tm");
 	
 		$(".current-loterry-container nav ul li").removeClass("lt-current-status-l-dt-0");
@@ -2144,7 +2181,7 @@ function main_change(){
 	}else if(wd >= 768 && wd < 1200){
 	
 		if(wd < 991){
-			
+
 			$(".current-loterry-container nav ul li").addClass("lt-current-status-td");
 	
 			$(".current-loterry-container nav ul li:eq(0)").addClass("lt-current-status-l-dt-0");
@@ -2193,8 +2230,68 @@ function main_change(){
 	}
 	//end
 
+	//start set style -> current lt status info -> backoffice page
+	if(wd < 850){
+	
+		if($(".lt-ys").length < 2){
+			
+			rec_div1 = $(".lt-ys:eq(0) span:eq(3)").html();
+			rec_div2 = $(".lt-ys:eq(0) span:eq(4)").html();
+			
+			$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
+			$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
+
+			$(".lt-ys:eq(0)").after("<div class='lt-ys row fluid-container'><span class='text-lt text-light' style='padding-top: 18px;'>"+rec_div1+"</span><span class='text-lt text-light' style='padding-top: 18px;'>"+rec_div2+"</span></div>");
+		
+		}
+	
+		if(wd > 510){
+				
+			$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
+			$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
+			
+			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
+		
+		}else{
+
+			$(".lt-ys:eq(0) .text-light:eq(0)").addClass("col-6");
+			$(".lt-ys:eq(0) .text-light:eq(1)").addClass("col-6");				
+			
+			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "18px"});
+		
+		}	
+			
+	}else{
+
+		if($(".lt-ys").length > 1){
+			
+			rec_div1 = $(".lt-ys:eq(1) span:eq(0)").html();
+			rec_div2 = $(".lt-ys:eq(1) span:eq(1)").html();
+			
+			$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
+			$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
+				
+			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
+
+			$(".lt-ys:eq(1)").remove();
+			
+			$(".lt-ys:eq(0) .text-lt:eq(2)").after("<span class='text-lt text-light'>"+rec_div1+"</span><span class='text-lt text-light'>"+rec_div2+"</span>");
+			
+		}
+
+	}
+	//end
+
 	//start select mode show
 	url = location.href;
+
+	if(url.indexOf("backoffice") >= 0){
+
+		if(url.indexOf("modal_deposits") >= 0 || url.indexOf("modal_withdraws") >= 0){
+    		ajust_card(wd);
+   		}
+
+   	}
 
 	if(url.indexOf("referral=analitics") >= 0 && check_h == "mf0"){
 

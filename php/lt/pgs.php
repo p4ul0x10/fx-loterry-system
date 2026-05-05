@@ -3,7 +3,6 @@ include $_SERVER['DOCUMENT_ROOT']."/php/conn.php";
 include $_SERVER['DOCUMENT_ROOT']."/php/theme-mod/mode_class.php";
 include $_SERVER['DOCUMENT_ROOT']."/php/lt/pgs-functions.php";
 
-session_start();
 $email = $_SESSION['email'];
 
 $get_id = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$email'");
@@ -27,7 +26,7 @@ if(isset($_POST['np'])){ //dropdown num items / page
 $lt_dt = $_POST['data'];
 $current_dt = str_split($lt_dt);
 $str_id = str_split($pg_id);
-	
+
 if($str_id[0] == "w" && !isset($_POST['np'])){
 
 	$pg_num = $ar_user['lt_wipg'];
@@ -55,6 +54,7 @@ if($pg_num < 1 && $str_id[0] == "w"){
 if($str_id[0] == "w" || $str_id[0] == "n"){ //pagination sys
 
 	$last_dt_on_db = $ar_user['dt_w']; //last date searched
+	$pg_mode = "off";
 
 	if($str_id[0] == "w"){
 
@@ -128,15 +128,16 @@ if($str_id[0] == "w" || $str_id[0] == "n"){ //pagination sys
   			
   		}
 
-  }else if(!isset($_POST['np']) && $ar_user['max_lwn'] == "true" && $str_id[2] == "n" && $str_id[0] == "w" || !isset($_POST['np']) && $ar_user['max_lwp'] == "true" && $str_id[2] == "p" && $str_id[0] == "w"){
+  	}else if(!isset($_POST['np']) && $ar_user['max_lwn'] == "true" && $str_id[2] == "n" && $str_id[0] == "w" || !isset($_POST['np']) && $ar_user['max_lwp'] == "true" && $str_id[2] == "p" && $str_id[0] == "w"){
   
-  	exit();
+  		exit();
 
-  }else if(!isset($_POST['np']) && $ar_user['max_lnn'] == "true" && $str_id[2] == "n" && $str_id[0] == "n" || !isset($_POST['np']) && $ar_user['max_lnp'] == "true" && $str_id[2] == "p" && $str_id[0] == "n"){
-  	exit();
-
-  }
-  //
+  	}else if(!isset($_POST['np']) && $ar_user['max_lnn'] == "true" && $str_id[2] == "n" && $str_id[0] == "n" || !isset($_POST['np']) && $ar_user['max_lnp'] == "true" && $str_id[2] == "p" && $str_id[0] == "n"){
+  		
+  		exit();
+  	
+  	}
+  	//
 
 //start 
 
@@ -282,7 +283,7 @@ if(isset($_POST['np'])){ //new number per page view / page setted
 	
 	}
 
-	if($pg_id == "w-prev-w-d" || $pg_id == "w-next-w-d"){ //return itens / new day -> session
+	if($pg_id == "w-prev-w-d" || $pg_id == "w-next-w-d"){ //return itens / new data|day -> session
 
 		$query_last_session = mysqli_query($con, "SELECT * FROM loterry_winners WHERE id > 0 ORDER BY id DESC LIMIT 1");
 		$ar_last_ts = mysqli_fetch_array($query_last_session);
@@ -380,8 +381,8 @@ if(isset($_POST['np'])){ //new number per page view / page setted
 	//end 
 
 	//start get session id for day selected
-	if(isset($dt) && $pg_id == "w-prev-w-d" || $pg_id == "w-next-w-d"){  //block for new winners search data
-		
+	if(isset($dt) && $pg_id == "w-prev-w-d" || $pg_id == "w-next-w-d"){  //block for new winners 	
+
 		$str_dt = base64_encode($dt);
 		
 		$str_dt0 = 1;
@@ -596,7 +597,9 @@ if(!isset($_POST['np'])){
 			}
 			
 			if($pg_id > 1){
+	
 				$ini_ishow += $pg_num + 1;
+	
 			}	
 
 		}
@@ -636,7 +639,9 @@ if(!isset($_POST['np'])){
 			$ini_ishow = $ini_ishow + 1;
 		
 			if($pg_id == 1){
+	
 				$ini_ishow = 1;
+	
 			}
 
 			if($pg_id > 1){
@@ -660,6 +665,7 @@ if(!isset($_POST['np'])){
 			if($str_id[0] == "n"){
 				
 				if($pg_id > 1){
+
 					mysqli_query($con, "UPDATE user_config SET max_lnn = 'true' WHERE id_user = '$idu'");
 				}else{
 					//mysqli_query($con, "UPDATE user_config SET max_lnp = 'true' WHERE id_user = '$idu'");
@@ -676,15 +682,23 @@ if(!isset($_POST['np'])){
 			$pg_now = $pgwn;
 
 			if($str_id[0] == "w" && $pg_mode != "num-w" && $pg_now < $ar_user['e_pg_w']){	
+	
 				mysqli_query($con, "UPDATE user_config SET pgw = pgw + 1 WHERE id_user = '$idu'"); //pg winners added
+	
 			}else if($str_id[0] == "w" && $pg_mode != "num-w" && $pg_now > $ar_user['e_pg_w']){
+	
 				exit(); //max pg limit exceeded
+	
 			}
 
 			if($str_id[0] == "n" && $pg_mode != "num-n" && $pg_now < $ar_user['e_pg_n']){
+	
 				mysqli_query($con, "UPDATE user_config SET pgn = pgn + 1 WHERE id_user = '$idu'"); //pg network added
+	
 			}else if($str_id[0] == "n" && $pg_mode != "num-n" && $pg_now > $ar_user['e_pg_n']){
+	
 				exit(); //max pg limit exceeded
+	
 			}
 
 		}
@@ -720,7 +734,9 @@ if(!isset($_POST['np'])){
 		if($pgwn == 1){ //max limit exceeded
 
 			if($str_id[0] == "n"){
+		
 				mysqli_query($con, "UPDATE user_config SET max_lnp = 'true' WHERE id_user = '$idu'");
+
 			}
 
 			exit();
@@ -728,11 +744,15 @@ if(!isset($_POST['np'])){
 		}else{
 
 			if($str_id[0] == "w"){
+	
 				mysqli_query($con, "UPDATE user_config SET pgw = pgw - 1 WHERE id_user = '$idu'");	
+			
 			}
 	
 			if($pgwn > 1 && $str_id[0] == "n"){
-				mysqli_query($con, "UPDATE user_config SET pgn = pgn - 1 WHERE id_user = '$idu'");		
+	
+				mysqli_query($con, "UPDATE user_config SET pgn = pgn - 1 WHERE id_user = '$idu'");	
+	
 			}
 			
 		}
@@ -742,8 +762,10 @@ if(!isset($_POST['np'])){
 }else{
 
 	if($pg_id == 1){
+
 		$ini_ishow = 1;
 		$max_ishow = $pg_num;
+	
 	}
 
 }
@@ -1089,10 +1111,18 @@ if(isset($pgs_mode)){
 //start ajust init lot count (for winners)
 if($str_id[0] == "w"){
 	
-	if($pgwn > 1 && $pg_mode == "next"){
-		$ggd = (($pgwn - 1) * $ar_user['lt_wipg']) - 1;
-	}else{
-		$ggd = 0;
+	if(isset($pgwn)){ //for pg >= 1 results
+
+		if($pgwn > 1 && $pg_mode == "next"){
+			
+			$ggd = (($pgwn - 1) * $ar_user['lt_wipg']) - 1;
+		
+		}else{
+		
+			$ggd = 0;
+		
+		}
+	
 	}
 
 }

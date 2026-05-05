@@ -181,7 +181,7 @@ function inif(id){
 			}
 
 		}
-		
+
 		$.post('php/lt/pgs.php', {"id":id, "np":np, "data":dt, "fw":filter_w, "fs":search_w}, function(data){ 
 			
 			if(id.charAt(0) == "w" && data != ""){ 
@@ -195,9 +195,9 @@ function inif(id){
 				for (var i = 0; i < pg_len; i++) {
 
 					if($(".page-nnw:eq("+i+")").attr("class") == "page-nnw page-link bc-theme color-theme bg-light" || $(".page-nnw:eq("+i+")").attr("class") == "page-nnw page-link bc-theme color-theme bg-dark"){
-
 						$(".page-nnw:eq("+i+")").attr("class", "page-nnw page-link bg-theme bc-theme text-light");
 					}
+
 				}
 				
 				if(theme_type == "l"){
@@ -218,9 +218,9 @@ function inif(id){
 				for (var i = 0; i < pg_len; i++) {
 
 					if($(".page-nnn:eq("+i+")").attr("class") == "page-nnn page-link bc-theme color-theme bg-light" || $(".page-nnw:eq("+i+")").attr("class") == "page-nnw page-link bc-theme color-theme bg-dark"){
-
 						$(".page-nnn:eq("+i+")").attr("class", "page-nnn page-link bg-theme bc-theme text-light");
 					}
+				
 				}
 				
 				if(theme_type == "l"){
@@ -279,7 +279,7 @@ function inif(id){
 		
 		//alert("iv "+iview+" mw "+max_wi+" ivw "+iview+" bt "+bg_theme);
 
-		$.post("php/att/att_pgs.php", {"pg_mode":pg_mode, "max_wi":max_wi, "iview": iview, "bg_theme":bg_theme}, function(data){
+		$.post("php/att/att_pgs.php", {"pg_mode":pg_mode, "max_wi":max_wi, "iview":iview, "bg_theme":bg_theme, "fw":filter_w, "f_v":search_w}, function(data){
 
 			if(id.charAt(0) == "w"){
 				$(".pg-w ul").html(data);

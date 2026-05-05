@@ -1,7 +1,7 @@
 <?php
 
 	include "conn.php";
-	session_start();
+	
 	$id_dep = $_POST['id_dep'];
 	$proto = $_POST['net_proto'];
 	$email = $_SESSION['email'];

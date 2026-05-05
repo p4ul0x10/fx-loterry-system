@@ -4,10 +4,6 @@
 <?php echo "Total depositado: 10"; ?>
 <?php echo "Total withdraw: 10"; ?>
 <?php echo "Total earn: 10"; */
-session_start();
-
-echo "dd".$idu;
-
 $array_direct_id_user = array();
 $array_direct_data = array();
 

@@ -1,15 +1,11 @@
 <?php
 
-	ini_set( 'display_errors', 0);
-
-	$host =$_SERVER['REQUEST_METHOD'];
+	$host = $_SERVER['REQUEST_METHOD'];
 	
 	if($host == "GET"){
 		exit();
 	}
-	
-	session_start();
-	
+		
 	include "conn.php";
 
 	$user = $_SESSION['email'];

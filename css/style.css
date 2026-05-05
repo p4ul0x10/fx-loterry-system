@@ -80,7 +80,7 @@ img{ vertical-align: sub !important; }
 .modal-login { margin-top: 5%; }
 .modal-body { max-height: 400px !important; overflow-y: auto; }
 
-.text-card-earn { margin: auto; display: list-item; }
+.text-card-earn { margin: 0px 4px; }
 .text-card-earn a { font-size:15px; }
 .user-block { margin: 0px 3%; }
 .user { margin: 5px 0px; }

@@ -1,14 +1,11 @@
-<?php
-$host =$_SERVER['REQUEST_METHOD'];
+<?php 
+$host = $_SERVER['REQUEST_METHOD'];
 if($host == "POST"){
   exit();
 }
 
-session_start();
 include "php/conn.php";
 include "php/functions.php";
-
-ini_set( 'display_errors', 1);
 ?>
 <!doctype html>
 <html lang="en">
@@ -560,7 +557,7 @@ ini_set( 'display_errors', 1);
           ?>
           <h1 class="color-theme">Last winners -</h1>
           <small><?php echo $array_last_session_lt['data']; ?></small>
-          <div class="daily-winners fluid-container mt-5" style="width: 90%; margin: 0px auto;">
+          <div class="daily-winners fluid-container mt-5">
             <?php 
             
             $get_last_lt_win = mysqli_query($con, "SELECT * FROM loterry_winners WHERE session_id = '$last_session_lt_session'");

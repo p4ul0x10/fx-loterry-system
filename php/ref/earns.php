@@ -27,10 +27,10 @@
             $count_dep_pro = mysqli_num_rows($get_deps_pro);
             
             if($count_dep_pro >= 1){
-              $active_pro = "<p class='text-success'>Active plans</p>";
+              $active_pro = "";
                $status_ref_pro = '<a class="bg-success" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }else{
-              $active_pro = "<p class='text-danger'>No active plans</p>";
+              $active_pro = "";
               $status_ref_pro = '<a class="bg-danger" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }
            
@@ -45,36 +45,27 @@
           }
           ?>
 		  		<div class="card-body" style="padding-top: 0px !important;">
-	         <h4 style="margin-bottom: 25px;">Deposits added</h4>
+	         <h4 style="margin-top: 25px; margin-bottom: 25px;">Earns</h4>
           <?php
 
           $get_info_percent = mysqli_query($con, "SELECT * FROM info WHERE id ='1'");
           $array_info = mysqli_fetch_array($get_info_percent);
 
-          $get_deposits=mysqli_query($con, "SELECT * FROM deposits WHERE id_user ='$idr' ");
+          $get_deposits = mysqli_query($con, "SELECT * FROM loterry_winners WHERE id_user ='$idr' ");
 
           $num_deps = mysqli_affected_rows($con);
+
           if($num_deps >= 1){
 
             $count_active_dep = 0;
             //$count_active = 0;
             while ($rows_dep_att = mysqli_fetch_array($get_deposits)) {
               
-              $dep_plan = $rows_dep_att['type_dep'];
-              if($dep_plan == "Starter"){
-                $percent = $array_info['plan1'];
-              }else if($dep_plan == "Advanced"){
-                $percent = $array_info['plan2'];
-              }else if($dep_plan == "Premium"){
-                $percent = $array_info['plan3'];
-              }
-
-              $amount = $rows_dep_att['quantidade'];
-              $calc = $amount * $percent / 100;
-              $calc_format = number_format($calc, 2, ".", "");
-
               $id_dep = $rows_dep_att['id'];
-              $get_rel_dep = mysqli_query($con, "SELECT * FROM rel_deposits WHERE id_dep ='$id_dep'");
+
+              $id_charnum = $rows_dep_att['rel_tickets'];
+              $str_idcharnum = str_split($id_charnum);
+              $get_rel_dep = mysqli_query($con, "SELECT * FROM rel_deposits WHERE id_charnum ='$id_dep_char'");
               $array_rel = mysqli_fetch_array($get_rel_dep);
               $count_active_dep++;
 
@@ -93,8 +84,10 @@
                 $coin_img = "<img class='img-actions-sm' src='images/coins/ltc-sm.png' title='litecoin' width='20px' height='20px' alt='ltc coin deposited'>";
               }
 
+              $data_earns = base64_decode($rows_dep_att['data']);
+              
               echo "<div class='container col-md-10 card bg-theme mb-1 col-tkt".$count_active_dep."'>";
-              echo "<div class='col-md-12'><p class='text-card-earn float-left text-light'>Id: <a href='#' class='text-muted'>".$array_rel['id_charnum']."</a>&nbsp;&nbsp;&nbsp; Plan: <a href='#' class='text-muted'>".$array_rel['plan']."</a>&nbsp;&nbsp;&nbsp; Paid: <a href='#' class='text-muted'>".$array_rel['data']."</a>&nbsp;&nbsp;&nbsp; Value: <a href='#' class='text-muted'>$".$array_rel['value']."</a> in ".$coin_img."&nbsp;&nbsp;&nbsp; Type: <a href='#' class='text-muted'>Package</a></p>";
+              echo "<div class='col-md-12'><p class='text-card-earn float-left text-light'>Id: <a href='#' class='text-muted'>".$str_idcharnum[0].$str_idcharnum[2].$str_idcharnum[3].$str_idcharnum[4].$str_idcharnum[5].$str_idcharnum[6].$str_idcharnum[7]."</a></p><p class='text-card-earn float-left text-light'>Total tickets: <a href='#' class='text-muted'>".$rows_dep_att['total_ticket']."</a></p><p class='text-card-earn float-left text-light'>Total earn: <a href='#' class='text-muted'>".$rows_dep_att['total_earn']."</a></p><p class='text-card-earn float-left text-light'>Parcial: <a href='#' class='text-muted'>".$rows_dep_att['parcial']."</a></p><p class='text-card-earn float-left text-light'>Data: <a href='#' class='text-muted'>".$data_earns."</a></p>";
               $get_id_rel = $array_rel['id_charnum'];
               $select_tkt_by_dep = mysqli_query($con, "SELECT * FROM rel_lt_dep WHERE id_dep ='$get_id_rel'");
               $init_count = 0;

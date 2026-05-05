@@ -8,7 +8,6 @@ if($host == "GET"){
 	
 include_once "../conn.php";
 
-session_start();
 $email = $_SESSION['email'];
 
 $get_user = mysqli_query($con, "SELECT * FROM usuarios WHERE email ='$email'");
@@ -25,18 +24,103 @@ $pg_mode = $_POST['pg_mode'];
 
 $get_last_winners = mysqli_query($con, "SELECT * FROM loterry_winners WHERE id >= 1 AND data = '$en_data_lwin'");
 
+$get_last_session_for_session = mysqli_fetch_array($get_last_winners);
+$last_session_lt = $get_last_session_for_session['session_id'];
+
+
 if(!isset($_POST['status'])){ //info no status
 
 	$count_wld = $_POST['max_wi'];
 	$wcount = $_POST['iview'];
 	
 	if($pg_mode == "w"){ //for winners
+
 		$npv = $array_user_config['lt_wipg'];
 		$pg = $array_user_config['pgw'];
 		$last_dt_win = $array_user_config['dt_w'];
 		
-		$count_wld = mysqli_num_rows($get_last_winners);
+		//for filter search -> return specific pgs
+		$f_v = $_POST['f_v'];
+		$f_t = $_POST['fw'];
+				
+		if($f_v == "0"){
+
+			$null_search = "true";
+		
+		}else{
+
+			$null_search = "false";
+
+		}
+		
+		if(strlen($_POST['f_v']) >= 1 && $null_search == "false"){
+		
+			if($f_t == "fw-name"){
+
+				$query_search = mysqli_query($con, "SELECT * FROM loterry_winners WHERE session_id = '$last_session_lt' AND nick LIKE '%$f_v%'");
+				
+				$count_rows_s_like = 0;
+
+				while($num_rows_s_like = mysqli_fetch_array($query_search)){
+
+					$count_rows_s_like++;
+
+				}
+
+				$count_wld = $count_rows_s_like;
+				$wcount = $npv;
+
+			}else if($f_t == "fw-lot"){	
+
+				//start get num lot min - max
+				$n1n2 = lot_return_ini_end($f_v);
+				
+				$n1 = $n1n2[0];
+				$n2 = $n1n2[1];
+				//end 
+
+				$get_tkt_buy_list = mysqli_query($con, "SELECT * FROM loterry_winners WHERE session_id = '$last_session_lt'");
+
+				$rc = 0;
+				$num_rows = mysqli_num_rows($get_tkt_buy_list);
+
+				$array_id_lt = array();
+				$array_value_lt = array();
+
+				$lot = 1;
+				$wcount = $npv; 
+				$count_v = 0;
+
+				while ($r = mysqli_fetch_array($get_tkt_buy_list)) {
+
+				  	if($r['total_ticket'] >= $n1 && $r['total_ticket'] <= $n2){
+				  		$count_v++;
+				  	}
+
+				  	$rc++;
+
+				}
+
+				$count_wld = $count_v;
+
+			}else if($f_t == "fw-tickets"){
+
+				$get_last_winners = mysqli_query($con, "SELECT * FROM loterry_winners WHERE total_ticket = '$f_v'");
+
+				$count_wld = mysqli_num_rows($get_last_winners);
+				$wcount = $npv;
+
+			}
+		
+		}
+		
+		if(strlen($_POST['f_v']) <= 1 && $null_search == "true"){
+			$count_wld = mysqli_num_rows($get_last_winners);
+		}
+
+		//echo $wcount." ".$count_wld." ".$null_search; exit();
 		$wcount = $npv;
+		
 	}
 
 }else{ //info winners att 
@@ -53,7 +137,7 @@ if(!isset($_POST['status'])){ //info no status
 		$last_dt_win = $array_user_config['dt_w'];
 	}
 
-	if($status == 1){
+	if($status == 1){ //status 1 by filter -> pgs
 
 		$get_last_winners = mysqli_query($con, "SELECT * FROM loterry_winners WHERE id >= 1 AND data = '$en_data_lwin' ORDER BY id DESC LIMIT 1");
 
@@ -108,7 +192,7 @@ if(!isset($_POST['status'])){ //info no status
 
 		}
 
-	}else{
+	}else{ //status 2 default -> pgs
 
 		$count_wld = mysqli_num_rows($get_last_winners);
 		$wcount = $npv;
@@ -141,14 +225,20 @@ if($count_wld > $wcount){ //lines on db > itens / view
 if($pg_mode == "w"){
 
 	if(isset($_POST['iview']) && $_POST['iview'] <= 100 && $_POST['iview'] > 0){
+
 		if($_POST['iview'] == 12 || $_POST['iview'] == 24 || $_POST['iview'] == 48 || $_POST['iview'] == 100){
+	
 			$pg_num = $_POST['iview'];
 			mysqli_query($con, "UPDATE user_config SET lt_wipg = '$pg_num', pgw = '1' WHERE id_user = '$id_user'");
+	
 		}else{
+	
 			exit();
+	
 		}
 
 	}
+
 
 ?>
 <li class="page-item page-pre">

@@ -25,8 +25,27 @@
 
       }else{
       
-        type_modal = "desktop";
-        flex_wrap = "wrap";
+        if(width > 1024){
+        
+          type_modal = "desktop";
+          flex_wrap = "wrap";
+      
+        }else{
+         
+          type_modal = "mobile";
+          $(".modal-depositar").css({"top":"0px"});
+        
+          if(width > 800){ //tablet show
+
+            flex_wrap = "initial";
+
+          }else{ //smartphone show
+
+            flex_wrap = "wrap";
+          
+          }
+        
+        }
 
       }
 
@@ -252,7 +271,7 @@
  <!-- start modal show withdraws requests -->
  <div class="modal modal-extrato text-primary" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-tables" role="document">
-    <div class="modal-content">
+    <div class="modal-content <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header">
         <h5 class="modal-title text-light" align="center">Saques / Extrato</h5>
         <i class="fa-with-exclamation fa fa-question" aria-hidden="true"></i>
@@ -411,7 +430,7 @@
 <!-- -->
 <div class="modal modal-saque text-primary" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document" style="top: 0px !important;">
-    <div class="modal-content modal-contentp modal-content-with">
+    <div class="modal-content modal-contentp modal-content-with <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header">
         <h5 class="modal-title text-light" align="center">Withdraw</h5>
         <i class="fa-withm-exclamation fa fa-question" aria-hidden="true"></i>

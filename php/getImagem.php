@@ -1,16 +1,20 @@
 <?php
-	
+
+	// Deactive post method	
 	$host = $_SERVER['REQUEST_METHOD'];
 	
 	if($host == "POST"){
 		exit();
 	}
 
-	session_start();
-	include "conn.php";
+	// Session start
+	include_once "conn.php";
 	
+	// Get vars get
 	$picNum = $_GET['user'];
 	$ref_name = $_GET['ref_name'];
+
+	//Init process
 	$user = $_SESSION['email'];
 	
 	if(isset($user)){

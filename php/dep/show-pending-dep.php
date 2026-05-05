@@ -3,7 +3,6 @@
 function theme_mode_color_d($in){
 
 	include "../conn.php";
-	session_start();
 	$email = $_SESSION['email'];
 
 	$ar_theme_tables = array();
@@ -120,7 +119,7 @@ if(!is_numeric($wd)){
 if($wd >= 990){
 
 	if($wd < 1200){
-		$wd = "t";
+		$wd = "d";
 		$wrap_mode = "flex-wm";
 	}else{
 		$wd = "d";

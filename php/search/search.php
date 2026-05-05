@@ -7,8 +7,6 @@ include $_SERVER['DOCUMENT_ROOT']."/php/lt/pgs-functions.php";
 //
 
 //
-session_start();
-
 $search = $_POST['search'];
 $search_type = $_POST['search_type'];
 $mode_search = $_POST['mode_search'];
@@ -192,6 +190,10 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 	$ar_lot_ini = array();
 	$ar_lot_end = array();
 
+	if($mode_search != "fw-lot" && $mode_search != "fw-tickets"){
+		$n2 = 0;
+	}
+
 	if($rw = mysqli_affected_rows($con) >= 1){
 		
 		$count_lot = 0;
@@ -226,11 +228,11 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 		   	//end
 
 		   	//start show data
-		   	if($mode_search == "fw-name" && $ar_win['id'] == $ar_id[$cs]){ ?> 
+		   	if($mode_search == "fw-name" && $ar_win['id'] == $ar_id[$gd]){ ?> 
 
-		   		<div class="col-xl-3 col-md-6" id="<?php echo $count."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
+		   		<div class="col-xl-3 col-md-6" id="<?php echo $cs."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
 					<div class="card bg-theme text-white mb-1">
-					  	<div class="card-body" id="dt-<?php echo $count; ?>">
+					  	<div class="card-body" id="dt-<?php echo $cs; ?>">
 					      <div>
 					        <p style="float: left;padding: 0px;margin: 0px;"><?php echo $ar_win['nick']; ?></p>
 					        <p class="text-light" style="float: right;padding: 0px;margin: 0px; font-size: 12px;">Prize lot: <a href="#" class="text-light"><a href="#" class="text-muted"><?php echo $ar_lot_ini[$gd]." - ".$ar_lot_end[$gd]; ?></a> <i aria-hidden="true" class="fa fa-cubes fa-1x text-light"></i></p>
@@ -250,13 +252,13 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 					</div> 
 				</div>
 		   		
-		   	<?php $ipg++; } $cs++;
+		   	<?php $ipg++; $cs++; } 
 
 		   	if($mode_search == "fw-tickets" && $ar_win['total_ticket'] == $search && $ipg <= $pgi){ ?> 
 
-		   		<div class="col-xl-3 col-md-6" id="<?php echo $count."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
+		   		<div class="col-xl-3 col-md-6" id="<?php echo $gd."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
 					<div class="card bg-theme text-white mb-1">
-					  	<div class="card-body" id="dt-<?php echo $count; ?>">
+					  	<div class="card-body" id="dt-<?php echo $gd; ?>">
 					      <div>
 					        <p style="float: left;padding: 0px;margin: 0px;"><?php echo $ar_win['nick']; ?></p>
 					        <p class="text-light" style="float: right;padding: 0px;margin: 0px; font-size: 12px;">Prize lot: <a href="#" class="text-light"><a href="#" class="text-muted"><?php echo $ar_lot_ini[$gd]." - ".$ar_lot_end[$gd]; ?></a> <i aria-hidden="true" class="fa fa-cubes fa-1x text-light"></i></p>
@@ -279,8 +281,8 @@ if($search_type == 'form-control search-input-w sw'){ //for winners
 		   	<?php $ipg++; }
 	   	
 	   		if($mode_search == "fw-lot" && $count_lot >= $max_ipg && $ipg <= $pgi && $ar_lot_ini[$gd] >= $n1 && $ar_lot_end[$gd] <= $n2 && $ar_lot_end[$gd] <= $nn2){ ?>
-				
-				<div class="col-xl-3 col-md-6" id="<?php echo $count."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
+
+				<div class="col-xl-3 col-md-6" id="<?php echo $gd."-".$ar_lot_ini[$gd].""."-dt-".$ar_lot_end[$gd]; ?>">
 					<div class="card bg-theme text-white mb-1">
 					  	<div class="card-body" style="">
 					      <div>

@@ -4,21 +4,20 @@ $host =$_SERVER['REQUEST_METHOD'];
 if($host == "GET"){
 	exit();
 }
-//ini_set( 'display_errors', 0);
- session_start();
- include "conn.php";
 
- $email = $_SESSION['email'];
- $valor = $_POST['valor'];
- $nome = $_POST['nome_user'];
- $id_dep = addslashes($_POST['id_dep']);
- $wallet = addslashes($_POST['wallet']);
- $subject = addslashes($_POST['subject']);
- $coin_with = addslashes($_POST['coin']);
- $proto = addslashes($_POST['prot']);
- $type_out = addslashes($_POST['type_out']);
- //$amount_f = addslashes($_POST['amount_f']);
- $data = date("m,j,Y g:i a"); //date("d/m/Y");
+include "conn.php";
+
+$email = $_SESSION['email'];
+$valor = $_POST['valor'];
+$nome = $_POST['nome_user'];
+$id_dep = addslashes($_POST['id_dep']);
+$wallet = addslashes($_POST['wallet']);
+$subject = addslashes($_POST['subject']);
+$coin_with = addslashes($_POST['coin']);
+$proto = addslashes($_POST['prot']);
+$type_out = addslashes($_POST['type_out']);
+//$amount_f = addslashes($_POST['amount_f']);
+$data = date("m,j,Y g:i a"); //date("d/m/Y");
 
 if(strlen($nome) <= 16){
 	$namestrl = true;

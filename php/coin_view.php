@@ -1,9 +1,8 @@
 <?php
-	session_start();
+
 	include "conn.php";
 	$email = $_SESSION['email'];
 	$coin = $_POST['coin'];
-
 
 	if($coin != "default" && $coin != "btc" && $coin != "ltc" && $coin != "tron" && $coin != "eth" && $coin != "usdt" && $coin != "busd"){
 			echo "<a href='#' title='coin updated'>Invalid coin !</a>";

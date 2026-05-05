@@ -4,7 +4,7 @@
 ?>
 <div class="modal modal-profile-ref text-primary" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-tables" role="document">
-    <div class="modal-content">
+    <div class="modal-content <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header bg-theme">
         <h5 class="modal-title text-light" align="center">Profile</h5>
         <i class="fa-with-exclamation fa fa-info" aria-hidden="true"></i>
@@ -91,10 +91,10 @@
             $count_dep_pro = mysqli_num_rows($get_deps_pro);
             
             if($count_dep_pro >= 1){
-              $active_pro = "<p class='text-success'>Active plans</p>";
+              $active_pro = "";
                $status_ref_pro = '<a class="bg-success" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }else{
-              $active_pro = "<p class='text-danger'>No active plans</p>";
+              $active_pro = "";
               $status_ref_pro = '<a class="bg-danger" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }
          
@@ -173,10 +173,10 @@
             $count_dep_pro = mysqli_num_rows($get_deps_pro);
             
             if($count_dep_pro >= 1){
-              $active_pro = "<p class='text-success'>Active plans</p>";
+              $active_pro = "";
                $status_ref_pro = '<a class="bg-success" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }else{
-              $active_pro = "<p class='text-danger'>No active plans</p>";
+              $active_pro = "";
               $status_ref_pro = '<a class="bg-danger" style="width:5px; height: 5px; border-radius: 50% 50% 50% 50%; position: relative; position: absolute; margin: 10px 5px;"></a>';
             }
             

@@ -3,7 +3,7 @@
 	if($host == "GET"){
 		exit();
 	}
-	session_start();
+
 	include ("conn.php");
 	
 	$senha = $_POST['senha'];

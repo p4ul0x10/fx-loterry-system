@@ -3,8 +3,6 @@
 function theme_user_id(){
 
 	include "../conn.php";
-
-	session_start();
 	$email = $_SESSION['email'];
 
 	$ar_u = array();

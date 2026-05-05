@@ -2,7 +2,6 @@
 
 	include "../conn.php";
 
-	session_start();
 	$id_lt_tkt = $_POST['id'];
 	$email = $_SESSION['email'];
 	ini_set( 'display_errors', 0);

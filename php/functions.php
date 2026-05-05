@@ -380,7 +380,7 @@
 					while($array_rel = mysqli_fetch_array($get_coin)){
 					
 						$coin = $array_rel['coin'];
-						$tx_withdraw = "<a href=".$array_rel['tx_prove']." class='nav-link text-muted' target='_new' title='payment ".$array_rel['id_charnum']." prove'>Link</a>";
+						$tx_withdraw = "<a href=".$array_rel['tx_prove']." class='nav-link text-primary' target='_new' title='payment ".$array_rel['id_charnum']." prove'>Link</a>";
 						$id_num_char_w = $array_rel['id_charnum'];
 						$dep_rel = $array_rel['dep_con'];
 					
@@ -391,13 +391,15 @@
 				//start
 				if($list['status'] == 0) {
 					$status = "<p class='text-success'>Pending</p>";
-					$btn = "<i class='fa fa-clock-o fa-2x ac-rm-with color-theme' title='waiting ".$id_num_char_w."' aria-hidden='true'></i>";
+					$btn = "<i class='fa fa-clock-o fa-2x ac-rm-with color-theme' title='waiting ".$id_num_char_w."' aria-hidden='true'></i></p>";
 				}
 				
 				if($list['status'] == 1) {
 					$status = "<p class='text-primary'>Completed</p>";
-					$btn = "<i class='fa fa-check-square fa-2x ac-pd-with color-theme' title='".$id_num_char_w." paid' aria-hidden='true'></i>";
+					$btn = "<i class='fa fa-check-square fa-2x ac-pd-with color-theme' title='".$id_num_char_w." paid' aria-hidden='true'></i></p>";
 				}
+
+				//$status = $status.$btn;
 
 				if($coin == "btc"){
 					$coin_img = "<img class='img-action-sm'src='images/coins/btc-sm.png' title='bitcoin' width='16px' height='16px' alt='btc coin deposited'>";
@@ -428,25 +430,20 @@
 				//
 
 			?>
-			<div class="card <?php echo $table_color; ?>" style="width: 100%;">
-        <div class="card-body" style="padding: 1.25rem 1.25rem 0px 1.25rem;">
+			<div class="card <?php echo $table_color; ?> card-with-mobile" style="width: 100%;">
+        <div class="card-body container-withs" style="padding: 1.25rem 1.25rem 0px 1.25rem; display: none;">
           <div class="fluid-container">
-          	<div class="row">
+          	<div class="col-mb-with-h row">
 						  <div class="col-sm-12">
 						    <span class="float-left color-theme">#<?php echo $id_num_char_w; ?></span>
 						    <span class="float-right"><?php echo $status; ?></span>
 						    <br>
 						    <hr>
 						    <div class="row mt-3">
-						      <div class="col-2 col-sm-2">
-						        <?php echo $btn; ?>
-						      </div>
-						      <div class="col-10 col-sm-10">
-						      	<div class="row">
-												<ul style="display: flex !important;">					      		
-						      				<!--<li class="nav-item color-theme">
-						      					Plan: <a href="#" class="nav-link"><?php echo $list['type_dep']; ?></a>
-						      				</li>-->
+						      <div class="col-12 col-sm-12">
+						      	<div class="row row-flex">
+						      		<div class="row m-auto">	
+												<ul class="ul-with font-dep-mt-3 float-left" style="display: flex !important; margin: 0px auto !important;">		
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Value: <a href="#" class="nav-link text-muted"><?php echo "$ ".$list['quantidade']; ?> in <?php echo $coin_img; ?></a>
 						      				</li>
@@ -454,10 +451,10 @@
 						      					Tell in: <?php echo $con_dep; ?>
 						      				</li>
 						      				<li class="nav-item <?php echo $text_color; ?>">
-						      					Tx: <?php echo $tx_withdraw; ?>
+						      				Tx: <?php echo $tx_withdraw; ?>
 						      				</li>
 						      			</ul>
-						      			<ul style="display: flex !important;">
+						      			<ul class="ul-with font-dep-mt-3 float-right" style="display: flex !important; margin: 0px auto !important;">
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Net: <a href="#" class="nav-link text-muted"><?php echo $list['proto']; ?></a>
 						      				</li>
@@ -465,8 +462,12 @@
 						      					Date: <a href="#" class="nav-link text-muted"><?php echo $list['data']; ?></a>
 						      				</li>
 						      			</ul>
+						      		</div>
 						      	</div>
 						      </div>
+						      <!--<div class="col-12 col-sm-12 mb-3">
+						        
+						      </div>-->
 						    </div>
 						  </div>
 						</div>
@@ -963,8 +964,6 @@
   function listdeposito(){
 
 		include "conn.php";
-		session_start();
-
 		$email = $_SESSION['email'];
 
 		$get_usr = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$email'");
@@ -1152,7 +1151,6 @@
   function listdeposito_mobile(){
 
 		include "conn.php";
-		session_start();
 
 		$email = $_SESSION['email'];
 
@@ -1320,8 +1318,8 @@
 				}
 			?>
 			<?php $hms = gmdate("H:i:s", $time_left); ?>
-			<div class="card card-<?php echo $cod_dep; ?>" style="width: 100%;">
-        <div class="card-body <?php echo $bg_color; ?>" style="padding: 1.25rem 1.25rem 0px 1.25rem;">
+			<div class="card card-<?php echo $cod_dep; ?> <?php echo $bg_color; ?> card-dep-mobile" style="width: 100%;">
+        <div class="card-body container-deps" style="padding: 1.25rem 1.25rem 0px 1.25rem; display: none;">
           <div class="fluid-container">
           	<div class="col-mb-dep-h row">
 						  <div class="col-sm-12">
@@ -1333,7 +1331,7 @@
 						      <div class="col-12 col-sm-12 col-10-<?php echo $cod_dep; ?>">
 						      	<div class="row row-flex">
 						      		<div class="row m-auto">	
-												<ul class="ul-dep font-dep-mt-3 float-left" style="display: flex !important;">		
+												<ul class="ul-dep font-dep-mt-3 float-left" style="display: flex !important; margin: 0px auto !important;">		
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Plan: <a href="#" class="nav-link text-muted"><?php echo $list['type_dep']; ?></a>
 						      				</li>
@@ -1344,7 +1342,7 @@
 						      				<?php if(!$isset_hms){ echo "Tx: ".$payment_dep; }else if($isset_hms){ echo "Time left: <a href='#' class='nav-link text-muted hms-dep-p' title='deposit time left'>".$hms."</a>"; } ?>
 						      				</li>
 						      			</ul>
-						      			<ul class="ul-dep font-dep-mt-3 float-right" style="display: flex !important;">
+						      			<ul class="ul-dep font-dep-mt-3 float-right" style="display: flex !important; margin: 0px auto !important;">
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Net: <a href="#" class="nav-link text-muted" id='net-proto<?php echo $cod_dep; ?>'><?php echo $proto; ?></a>
 						      				</li>
@@ -1375,7 +1373,6 @@
 
 		include "conn.php";
 		
-		session_start();
 		$email = $_SESSION['email'];
 		
 		$get_usr = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$email'");
@@ -1808,8 +1805,8 @@
 				$value_tkt = 0.20 * $array_tkt_info['value'];
 
 		?>
-			<div class="card <?php echo $bg_color; ?>" style="width: 100%;">
-        <div class="card-body" style="padding: 1.25rem 1.25rem 0px 1.25rem;">
+			<div class="card <?php echo $bg_color; ?> card-dep-mobile" style="width: 100%;">
+        <div class="card-body container-deps" style="padding: 1.25rem 1.25rem 0px 1.25rem; display: none;">
           <div class="fluid-container">
           	<div class="col-mb-dep-h row">
 						  <div class="col-sm-12">
@@ -1820,7 +1817,8 @@
 						    <div class="row mt-3">
 						      <div class="col-12 col-sm-12 mgl-center">
 						      	<div class="row row-flex">
-												<ul class="ul-dep" style="display: flex !important;">					      		
+						      		<div class="row m-auto">	
+												<ul  class="ul-dep font-dep-mt-3 float-left" style="display: flex !important; margin: 0px auto !important;">					      		
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Plan: <a href="#" class="nav-link text-muted">Loterry</a>
 						      				</li>
@@ -1831,7 +1829,7 @@
 						      					Tickets: <a href="#" class="nav-link text-muted"><?php echo $qtd; ?></a>
 						      				</li>
 						      			</ul>
-						      			<ul class="ul-dep" style="display: flex !important;">
+						      			<ul  class="ul-dep font-dep-mt-3 float-right" style="display: flex !important; margin: 0px auto !important;">
 						      				<li class="nav-item <?php echo $text_color; ?>">
 						      					Net: <a href="#" id="<?php echo $id_rel_dep; ?>" class="nav-link text-muted"><?php echo $proto; ?></a>
 						      				</li>
@@ -1839,6 +1837,7 @@
 						      					Date: <a href="#" class="nav-link text-muted"><?php echo $data; ?></a>
 						      				</li>
 						      			</ul>
+						      		</div>
 						      	</div>
 						      </div>
 						    </div>
@@ -2049,7 +2048,7 @@
 	function table_ref1(){
 
 		include_once "conn.php";
-		session_start();
+
 		$user = $_SESSION['email'];
 		$get_info = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$user'");
 		$count = 1;
@@ -2429,7 +2428,6 @@
 	function idu(){
 		
 		include "conn.php";
-		session_start();
 		$email = $_SESSION['email'];
 		
 		$check_id = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$email'");

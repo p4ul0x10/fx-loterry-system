@@ -1,11 +1,10 @@
 <?php
 	
-	$host =$_SERVER['REQUEST_METHOD'];
+	$host = $_SERVER['REQUEST_METHOD'];
 	if($host == "POST"){
 		exit();
 	}
 
-	session_start();
 	include "conn.php";
 	$picNum = $_GET['picNum'];
 	$ref_name = $_GET['ref_name'];

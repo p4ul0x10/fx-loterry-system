@@ -88,7 +88,7 @@
 </script>
 <div class="modal text-primary modal-not" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content <?php echo $mode_theme_bg[0]; ?>">
       <div class="modal-header bg-theme">
         <h5 class="modal-title text-light" align="center">Notifications</h5>
         <i class="fa-with-exclamation fa fa-info" aria-hidden="true"></i>

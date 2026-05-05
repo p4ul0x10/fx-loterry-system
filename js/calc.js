@@ -856,6 +856,15 @@ function ac_pay_dep(id){
 	
 	}
 	
+	if(mode == "mobile"){ //force desktop for render low dimesions
+		table_isset = $(".tbd").attr("class");
+	
+		if(table_isset == "tbd table table-striped table-dark"){
+			mode = "desktop";
+		}
+	
+	}
+	
 	if(r_id_dep <= 8){ //package table
 
 	}else{ //ticket table

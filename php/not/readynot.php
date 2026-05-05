@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$host = $_SERVER['REQUEST_METHOD'];
 	if($host == "GET"){
 		exit();

@@ -3,8 +3,6 @@ include $_SERVER['DOCUMENT_ROOT']."/php/lt/pgs-functions.php";
 
 //
 include "../conn.php";
-
-session_start();
 $user = $_SESSION['email'];
 
 $get_info = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$user'");
@@ -76,9 +74,9 @@ while ($array_last_win = mysqli_fetch_array($all_last_winners)) { ?>
     //end
 
 ?>                     
-<div class="col-xl-3 col-md-6" id="<?php echo $count."-".$ls_str.""."-dt-".$dt; ?>">
+<div class="col-xl-3 col-md-6" id="<?php echo $wcount."-".$ls_str.""."-dt-".$dt; ?>">
   <div class="card bg-theme text-white mb-1">
-      <div class="card-body" id="dt-<?php echo $count; ?>">
+      <div class="card-body" id="dt-<?php echo $wcount; ?>">
         <div>
           <p style="float: left;padding: 0px;margin: 0px;"><?php echo $array_last_win['nick']; ?></p>
           <p class="text-light" style="float: right;padding: 0px;margin: 0px; font-size: 12px;">Prize lot: <a href="#" class="text-light"><a href="#" class="text-muted"><?php echo $lot_ini." - ".$lot_end; ?></a> <i aria-hidden="true" class="fa fa-cubes fa-1x text-light"></i></p>

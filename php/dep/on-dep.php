@@ -2,8 +2,6 @@
 
 include "../conn.php";
 
-session_start();
-
 $email = $_SESSION['email'];
 $mode_show = $_POST['type_show'];
 $display_w = $_POST['modal_type'];

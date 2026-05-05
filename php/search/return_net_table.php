@@ -1,7 +1,5 @@
 <?php 
 include_once "../conn.php";
-
-session_start();
 $user = $_SESSION['email'];
 
 $get_info = mysqli_query($con, "SELECT * FROM usuarios WHERE email = '$user'");

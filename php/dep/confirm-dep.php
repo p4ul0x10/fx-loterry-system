@@ -121,8 +121,6 @@ function sponsor_bonus($id_dep){
 	include "../functions.php";
 	include "request_value_coin.php";
 
-	session_start();
-
 	$email = $_SESSION['email'];
 	$confirm = $_POST['tx'];
 	$id_charnum = $_POST['id_dep'];

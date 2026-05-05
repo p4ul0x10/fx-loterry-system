@@ -53,7 +53,7 @@ if($url_page == "/perfil.php"){
 
                   document.getElementsByTagName("body")[0].style.overflowY = "auto";
                   document.getElementsByTagName("header")[0].style.zIndex='10000';
-                  
+                 
                }, 1000);
 
             });
@@ -169,7 +169,7 @@ if($url_page == "/perfil.php"){
                   element.scrollIntoView();
                   
                 }
-
+            
               }else{
               
                 // página totalmente carregada (DOM, imagens etc.)
@@ -227,12 +227,12 @@ if($url_page == "/perfil.php"){
               Withdrawals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-rw text-light" href="#last-loterries"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"><path fill="currentColor" d="M10.5 7a3 3 0 1 0 0 6a3 3 0 0 0 0-6M9 10a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0M2 6.25A2.25 2.25 0 0 1 4.25 4h12.5A2.25 2.25 0 0 1 19 6.25V11h-1.5V8.5h-.75a2.25 2.25 0 0 1-2.25-2.25V5.5h-8v.75A2.25 2.25 0 0 1 4.25 8.5H3.5v3h.75a2.25 2.25 0 0 1 2.25 2.25v.75H14V16H4.25A2.25 2.25 0 0 1 2 13.75zm2.25-.75a.75.75 0 0 0-.75.75V7h.75A.75.75 0 0 0 5 6.25V5.5zM17.5 7v-.75a.75.75 0 0 0-.75-.75H16v.75c0 .414.336.75.75.75zm-14 6.75c0 .414.336.75.75.75H5v-.75a.75.75 0 0 0-.75-.75H3.5zm.901 3.75H14V19H7a3 3 0 0 1-2.599-1.5M22 11V9a3 3 0 0 0-1.5-2.599V11zm-5.5 1a1.5 1.5 0 0 0-1.5 1.5v8a1.5 1.5 0 0 0 1.5 1.5h5a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5zm.5 4.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m-3 2h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m-3 2h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1M16.5 14a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5z"></path></svg>
-              Last Loterries</a>
+              <a class="nav-link link-rw text-light hnav-mt" href="#last-loterries"><svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"><path fill="currentColor" d="M10.5 7a3 3 0 1 0 0 6a3 3 0 0 0 0-6M9 10a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0M2 6.25A2.25 2.25 0 0 1 4.25 4h12.5A2.25 2.25 0 0 1 19 6.25V11h-1.5V8.5h-.75a2.25 2.25 0 0 1-2.25-2.25V5.5h-8v.75A2.25 2.25 0 0 1 4.25 8.5H3.5v3h.75a2.25 2.25 0 0 1 2.25 2.25v.75H14V16H4.25A2.25 2.25 0 0 1 2 13.75zm2.25-.75a.75.75 0 0 0-.75.75V7h.75A.75.75 0 0 0 5 6.25V5.5zM17.5 7v-.75a.75.75 0 0 0-.75-.75H16v.75c0 .414.336.75.75.75zm-14 6.75c0 .414.336.75.75.75H5v-.75a.75.75 0 0 0-.75-.75H3.5zm.901 3.75H14V19H7a3 3 0 0 1-2.599-1.5M22 11V9a3 3 0 0 0-1.5-2.599V11zm-5.5 1a1.5 1.5 0 0 0-1.5 1.5v8a1.5 1.5 0 0 0 1.5 1.5h5a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5zm.5 4.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m-3 2h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m-3 2h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1m3 0h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1M16.5 14a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5z"></path></svg>
+              Winners</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-refinfo text-light" href="#network"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"></path></g></svg>
-              Referrals</a>
+              <a class="nav-link link-refinfo text-light hnav-mt" href="#network"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"></path></g></svg>
+              Network</a>
             </li>
           </ul>          
           <form class="form-eng form-inline my-2 my-lg-0">
@@ -288,171 +288,171 @@ if($url_page == "/perfil.php"){
               </nav>
             </div>
             <script type="text/javascript">
-            function getBrowserName(userAgent) {
+              function getBrowserName(userAgent) {
 
-              // The order matters here, and this may report false positives for unlisted browsers.
+                // The order matters here, and this may report false positives for unlisted browsers.
 
-              if(userAgent.includes("Firefox")) {
-                // "Mozilla/5.0 (X11; Linux i686; rv:104.0) Gecko/20100101 Firefox/104.0"
-                return "Mozilla Firefox";
-              }else if(userAgent.includes("SamsungBrowser")) {
-                // "Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G955F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36"
-                return "Samsung Internet";
-              }else if(userAgent.includes("Opera") || userAgent.includes("OPR")) {
-                // "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_5_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 OPR/90.0.4480.54"
-                return "Opera";
-              }else if(userAgent.includes("Edge")) {
-                // "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
-                return "Microsoft Edge (Legacy)";
-              }else if(userAgent.includes("Edg")) {
-                // "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 Edg/104.0.1293.70"
-                return "Microsoft Edge (Chromium)";
-              }else if(userAgent.includes("Chrome")) {
-                // "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
-                return "Google Chrome or Chromium";
-              }else if(userAgent.includes("Safari")) {
-                // "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1"
-                return "Apple Safari";
-              }else{
-                return "unknown";
+                if(userAgent.includes("Firefox")) {
+                  // "Mozilla/5.0 (X11; Linux i686; rv:104.0) Gecko/20100101 Firefox/104.0"
+                  return "Mozilla Firefox";
+                }else if(userAgent.includes("SamsungBrowser")) {
+                  // "Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G955F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36"
+                  return "Samsung Internet";
+                }else if(userAgent.includes("Opera") || userAgent.includes("OPR")) {
+                  // "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_5_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 OPR/90.0.4480.54"
+                  return "Opera";
+                }else if(userAgent.includes("Edge")) {
+                  // "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
+                  return "Microsoft Edge (Legacy)";
+                }else if(userAgent.includes("Edg")) {
+                  // "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 Edg/104.0.1293.70"
+                  return "Microsoft Edge (Chromium)";
+                }else if(userAgent.includes("Chrome")) {
+                  // "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+                  return "Google Chrome or Chromium";
+                }else if(userAgent.includes("Safari")) {
+                  // "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1"
+                  return "Apple Safari";
+                }else{
+                  return "unknown";
+                }
+
               }
 
-            }
-
-            function changeLanguage(lang){
-              
-              const browserName = getBrowserName(navigator.userAgent);
-              nav = browserName;
-          
-              if(nav == "Mozilla Firefox"){
-
-                 var iframe1 = document.getElementsByClassName("skiptranslate")[1];
-                 
-                 if(lang != "Inglês"){
-                 
-                  count = 0;
-                  elmnt = iframe1.contentWindow.document.getElementsByTagName("span")[2];
-                  console.log(elmnt);
-                  elmnt.click();
-                  
-                  while(count < 1000){
-                  
-                    var iframe = document.getElementsByClassName("skiptranslate")[4];
-                    var elmnt = iframe.contentWindow.document.getElementsByTagName("span")[count];
-                    el = elmnt.innerText;
-                  
-                    if(el == lang){
-                      
-                      elmnt.click();
-                      elmntt = iframe1.contentWindow.document.getElementsByTagName("button")[0];
-                      elmntt.click();
-                      count = 1000;
-                    }
-                  
-                    count++;
-                  }
-
-                 }else{
+              function changeLanguage(lang){
                 
-                   elmntt = iframe1.contentWindow.document.getElementsByTagName("button")[3];
-                   elmntt.click();
-                 } 
+                const browserName = getBrowserName(navigator.userAgent);
+                nav = browserName;
+            
+                if(nav == "Mozilla Firefox"){
 
-              }else{
-
-                  if(lang == "Português (Brasil)"){
-                    lang_adapt = "›Português (Brasil)";
-                  }else if(lang == "Russo"){
-                    lang_adapt = "›Russo";
-                  }else{
-                    lang_adapt = "›Inglês";
-                  }
-                 
-                  if($(".translate-drop img").attr("src") == "images/flags/br.svg" || $(".translate-drop img").attr("src") == "images/flags/ru.svg" && document.getElementsByTagName("iframe").lenght > 2){
-                    var iframe = document.getElementsByTagName("iframe")[2];
-                  }else{
-                    var iframe = document.getElementsByTagName("iframe")[1];
-                  }
-
-                  if(lang != "Inglês"){
-                  
-                    $(".goog-te-gadget-simple").click();
-                    
-                    count_max = iframe.contentWindow.document.getElementsByTagName("a").length;
+                   var iframe1 = document.getElementsByClassName("skiptranslate")[1];
+                   
+                   if(lang != "Inglês"){
+                   
                     count = 0;
-                  
-                    while(count < count_max){
-                  
-                      var elmnt = iframe.contentWindow.document.getElementsByTagName("a")[count];
+                    elmnt = iframe1.contentWindow.document.getElementsByTagName("span")[2];
+                    console.log(elmnt);
+                    elmnt.click();
+                    
+                    while(count < 1000){
+                    
+                      var iframe = document.getElementsByClassName("skiptranslate")[4];
+                      var elmnt = iframe.contentWindow.document.getElementsByTagName("span")[count];
                       el = elmnt.innerText;
-                      
-                      if(el == lang_adapt){
+                    
+                      if(el == lang){
                         
                         elmnt.click();
-                        break;
-
+                        elmntt = iframe1.contentWindow.document.getElementsByTagName("button")[0];
+                        elmntt.click();
+                        count = 1000;
                       }
-                      
+                    
                       count++;
                     }
 
-                  }else{
+                   }else{
+                  
+                     elmntt = iframe1.contentWindow.document.getElementsByTagName("button")[3];
+                     elmntt.click();
+                   } 
 
-                    $(".goog-te-gadget-simple").click();
-                    count = 0;
-                     var iframe = document.getElementsByTagName("iframe")[0];
-                    while(count < 2){
-                    elmntt = iframe.contentWindow.document.getElementsByTagName("button")[count];
-                    elmntt.click();
-                    count++;
+                }else{
 
+                    if(lang == "Português (Brasil)"){
+                      lang_adapt = "›Português (Brasil)";
+                    }else if(lang == "Russo"){
+                      lang_adapt = "›Russo";
+                    }else{
+                      lang_adapt = "›Inglês";
+                    }
+                   
+                    if($(".translate-drop img").attr("src") == "images/flags/br.svg" || $(".translate-drop img").attr("src") == "images/flags/ru.svg" && document.getElementsByTagName("iframe").lenght > 2){
+                      var iframe = document.getElementsByTagName("iframe")[2];
+                    }else{
+                      var iframe = document.getElementsByTagName("iframe")[1];
                     }
 
-                  }
+                    if(lang != "Inglês"){
+                    
+                      $(".goog-te-gadget-simple").click();
+                      
+                      count_max = iframe.contentWindow.document.getElementsByTagName("a").length;
+                      count = 0;
+                    
+                      while(count < count_max){
+                    
+                        var elmnt = iframe.contentWindow.document.getElementsByTagName("a")[count];
+                        el = elmnt.innerText;
+                        
+                        if(el == lang_adapt){
+                          
+                          elmnt.click();
+                          break;
 
-              }
-               
-              if(lang == "Português (Brasil)"){
-                f = "br";
-              }else if(lang == "Russo"){
-                f = "ru";
-              }else if(lang == "Inglês"){
-                f = "gb";
-              }
-             
-              $(".translate-drop img").attr("src","images/flags/"+f+".svg");
-              $(".dropdown-menu-flags").toggle();
+                        }
+                        
+                        count++;
+                      }
 
-              setTimeout(function(){
-                
-                myReferenceDiv = document.getElementById('goog-gt-tt');
-                next = myReferenceDiv.nextElementSibling;
-                next.style.display = "none";
-                myReferenceDivh = $(".main-container h3").text();
-                
-                if(myReferenceDivh != "Resume accountFX Loterry"){  
-                  svg_len = document.getElementsByTagName("svg").length;
-                  
-                  for (var i = 0; i < svg_len; i++) {
-                    svg = document.getElementsByTagName("svg")[i].getAttribute("class");
-                    class_svg = "";
-                         
-                    if(document.getElementsByTagName("svg")[i].getAttribute("class") != "" && document.getElementsByTagName("svg")[i].getAttribute("class") != null && svg.charAt(0) != "f" && svg.charAt(1) != "e" && svg.charAt(2) != "a" && svg.charAt(3) != "t" && svg.charAt(4) != "h" && svg.charAt(5) != "e" && svg.charAt(6) != "r"){
-                     
-                      svgc=svg;
+                    }else{
 
-                      $("svg:eq("+i+")").remove();
-                      document.getElementsByTagName("header")[0].style.zIndex='10000';
-                     
+                      $(".goog-te-gadget-simple").click();
+                      count = 0;
+                       var iframe = document.getElementsByTagName("iframe")[0];
+                      while(count < 2){
+                      elmntt = iframe.contentWindow.document.getElementsByTagName("button")[count];
+                      elmntt.click();
+                      count++;
+
+                      }
+
                     }
-                  
-                  }
 
                 }
+                 
+                if(lang == "Português (Brasil)"){
+                  f = "br";
+                }else if(lang == "Russo"){
+                  f = "ru";
+                }else if(lang == "Inglês"){
+                  f = "gb";
+                }
+               
+                $(".translate-drop img").attr("src","images/flags/"+f+".svg");
+                $(".dropdown-menu-flags").toggle();
 
-              }, 3000);
-              
-            }              
+                setTimeout(function(){
+                  
+                  myReferenceDiv = document.getElementById('goog-gt-tt');
+                  next = myReferenceDiv.nextElementSibling;
+                  next.style.display = "none";
+                  myReferenceDivh = $(".main-container h3").text();
+                  
+                  if(myReferenceDivh != "Resume accountFX Loterry"){  
+                    svg_len = document.getElementsByTagName("svg").length;
+                    
+                    for (var i = 0; i < svg_len; i++) {
+                      svg = document.getElementsByTagName("svg")[i].getAttribute("class");
+                      class_svg = "";
+                           
+                      if(document.getElementsByTagName("svg")[i].getAttribute("class") != "" && document.getElementsByTagName("svg")[i].getAttribute("class") != null && svg.charAt(0) != "f" && svg.charAt(1) != "e" && svg.charAt(2) != "a" && svg.charAt(3) != "t" && svg.charAt(4) != "h" && svg.charAt(5) != "e" && svg.charAt(6) != "r"){
+                       
+                        svgc=svg;
+
+                        $("svg:eq("+i+")").remove();
+                        document.getElementsByTagName("header")[0].style.zIndex='10000';
+                       
+                      }
+                    
+                    }
+
+                  }
+
+                }, 3000);
+                
+              }              
             </script> 
             <script type="text/javascript">
               function getBrowserName(userAgent) {
