@@ -106,9 +106,9 @@
             $m_type = "dl-td";
         }
 
-        if($wd_win < 1050){ $conv = "auto; float: left; height: 20px; margin: 0px 2px;"; }else{ $conv = $conv."% !important; text-align: center;"; }
+        if($wd_win < 1050){ $conv = "auto; float: left; height: 20px; margin: 0px 2px;"; }else{ $conv = $conv." text-align: center; top: 2px;"; }
 
-        echo '<div class="graph-access-m graph-mg-d" id="'.$mode.'-'.$loop_month.'" style="width: '.$conv.'"><div class="'.$m_type.'" style="position: relative; top: 7px; width: 100%;"><p class="dl-text text-muted">'.$loop_month.': <a href="#" class="color-theme">'.$access_dm.'</a></p></div></div>';
+        echo '<div class="graph-access-m graph-mg-d" id="'.$mode.'-'.$loop_month.'" style="'.$conv.'"><div class="'.$m_type.'" style="position: relative; top: 11px; width: 100%;"><p class="dl-text text-muted">'.$loop_month.': <a href="#" class="color-theme">'.$access_dm.' &nbsp;</a></p></div></div>';
     
     }
     //end
@@ -583,7 +583,7 @@
                         //end
 
                         if($wd_win >= 1050){ //desktop render    
-                            echo '<div class="bd max-limit-graph graph-mg-d" id="ad-'.$loop_month.'" onmouseenter="'.$show_access.'('.$loop_monthidx.');" style="width: '.$conv.'% !important; text-align: center;"><p class="graph-num">'.$loop_month.'</p><div class="bg-theme percent-col mt-1" title='.$array_max_access_day[$graph_p_count].' style="position: relative; top: '.$top.'%; width: 100%; height: '.$graph_percent_show.'%;"></div></div>';
+                            echo '<div class="bd max-limit-graph graph-mg-d" id="ad-'.$loop_month.'" onmouseenter="'.$show_access.'('.$loop_monthidx.');" style="width: '.$conv.'% !important; text-align: center;"><p class="graph-num" style="font-weight: 600;">'.$loop_month.'</p><div class="bg-theme percent-col mt-1" title='.$array_max_access_day[$graph_p_count].' style="position: relative; top: '.$top.'%; width: 100%; height: '.$graph_percent_show.'%;"></div></div>';
                         }else{ // < desktop render
                             echo '<div class="bd max-limit-graph graph-tm-mg '.$graph_rl.'" id="ad-'.$loop_month.'" onmouseenter="'.$show_access.'('.$loop_monthidx.');" style="'.$clear.' width: 50% !important; height: 20px; '.$text_align.'"><p class="graph-num">'.$loop_month.'</p><div class="bg-theme percent-col" title='.$array_max_access_day[$graph_p_count].' style="position: relative; top: -14px; width: '.$wd_ajust.'%; height: 90%; left: '.$left_ajust.'%;"></div></div>';
                         }
@@ -594,7 +594,7 @@
                     }else{
 
                         if($wd_win >= 1050){
-                            echo '<div class="bd max-limit-graph graph-mg-d" style="width: '.$conv.'% !important; text-align: center;"><p class="graph-num">'.$loop_month.'</p></div>';
+                            echo '<div class="bd max-limit-graph graph-mg-d" style="width: '.$conv.'% !important; text-align: center;"><p class="graph-num" style="font-weight: 600;">'.$loop_month.'</p></div>';
                         }else{
                             echo '<div class="bd max-limit-graph graph-tm-mg" style="'.$float_l.' width: 50% !important; height: 20px; '.$text_align.'"><p class="graph-num">'.$loop_month.'</p></div>';
                         }

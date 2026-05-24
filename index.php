@@ -153,7 +153,7 @@ include "php/functions.php";
       }, 1);
     </script>
   </head>
-  <body class="text-center bg-light" onload="main_change();" onresize="main_change();" style="overflow-y: hidden;">
+  <body class="text-center bg-light" onload="main_change();" onresize="main_change();" style="overflow-y: hidden; overflow-x: hidden;">
     <div class="fix" style="width: 100%; position: absolute; z-index: 10000;margin-top: 6%; background: rgba(17,18,36, 1);"><img id="loading" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" width="100px" height="100px" style="margin-top: 8%;"></div>
     <div class="fluid-container w-100 h-100 flex-column">
       <!-- start header here -->
@@ -370,56 +370,24 @@ include "php/functions.php";
       <main role="main" class="fluid-container main main_off padding-0" style="margin-bottom: 4%;">
         <div class="col-10" style="margin: 0px auto;">
           <h1 class="cover-heading color-theme" style="font-size: 45px;"><?php echo titulo(); ?></h1>
-          <p id="packages" class="lead text-center desc text-dark"><?php echo descricao(); ?></p>
+          <p id="packages" class="lead text-center desc text-dark" style="width:100%; max-width: 1366px;"><?php echo descricao(); ?></p>
         </div>
         <div class="container row box-plans" style="overflow-y: auto; margin: 40px auto;">
-          <h1 class="text-center" style="position: relative; margin: 0px auto !important;">Plans / Package's</h1>
           <marquee class="text-dark mt-5" style="font-size: 19px;">Online lottery with incredible winnings and stable reward plans.</marquee>
-
-          <div id="plans" class="col-md-4 bg-theme text-light space-mb sp-mg-plan">
-            <h2 class="text-light">Starter</h2>
-            <h3>$ 0.5 / 12 hours</h3>
-            <p class="text-sm-start" style="font-size: 12px;">
-              receive 100 tickets = $ 0.20 each
+          <div class="jumbotron col-12">
+            <h2 class="color-theme">The FX Loterry</h2>
+            <h3 class="mt-3" style="font-size: 17.5px">$ 0.2 per ticket / turn's of the 12 hours</h3>
+            <p class="text-sm-start mt-3" style="font-size: 13px;">
+              Turns last 12 hours a day, with 2 turns in total. During these turns, players are free to spend their tickets and try their luck at the end.
             </p>
-            <p class="text-sm-start col-10" style="font-size: 11px; margin: 16px auto;">
-             Entry plan with basic maximum limit, essential to get good rewards on daily lotteries.
+            <p class="text-sm-start col-10" style="font-size: 13px; margin: 16px auto;">
+             Deposit founds end start your loterries, after depositing funds, your account is cleared to buy lottery tickets...
             </p>
-            <a href="#min-started" class="text-muted">Min:</a><span> $ 0.20</span> <a href="#max-started" class="text-muted">Max:</a><span> $ 100</span>
-            <p class="txtp" style="font-size: 14px;">earnings per referral <i class="fa fa-check-square" aria-hidden="true"></i></p>        
-            <p class="txtp" style="font-size: 14px;">week promotion <i class="fa fa-window-close" aria-hidden="true"></i></p>   
-            <p class="txtp" style="font-size: 14px;">low rakeback <i class="fa fa-check-square" aria-hidden="true"></i></p> 
-            <a href="#fx-loterry-idxa" type="button" class="btn btn-sm btn-outline-light float-right btn-p bg-theme mb-2" id="starter">+ info</a>
-          </div>
-          <div class="col-md-4 bg-theme text-light space-mb sp-mg-plan" id="plans">
-            <h2 class="text-light">Advanced</h2>
-            <h3>$ 1 / 12 hours</h3>
-            <p class="text-sm-start" style="font-size: 12px;">
-              receive 250 tickets = $ 0.20 each
-            </p>
-            <p class="text-sm-start col-10" style="font-size: 11px; margin: 16px auto;">
-            Ideal for moderate investors who want to have good returns and excellent daily rewards.
-            </p>
-            <a href="#min-advanced" class="text-muted">Min:</a><span> $ 0.20</span> <a href="#max-advanced" class="text-muted">Max:</a><span> $ 250</span>
-            <p class="txtp" style="font-size: 14px;">earnings per referral <i class="fa fa-check-square" aria-hidden="true"></i></p>   
-            <p class="txtp" style="font-size: 14px;">week promotion <i class="fa fa-check-square" aria-hidden="true"></i></p>
-            <p class="txtp" style="font-size: 14px;">medium rakeback <i class="fa fa-check-square" aria-hidden="true"></i></p>    
-            <a href="#fx-loterry-idxa" class="btn btn-sm btn-outline-light float-right btn-p bg-theme mb-2" id="advanced">+ info</a>
-          </div>
-          <div class="col-md-4 bg-theme text-light space-mb sp-mg-plan">
-            <h2 class="text-light">Premium</h2>
-            <h3>$ 2 / 12 hours</h3>
-            <p class="text-sm-start" style="font-size: 12px;">
-             receive 500 tickets = $ 0.20 each
-            </p>
-            <p class="text-sm-start col-10" style="font-size: 11px; margin: 16px auto;">
-             Ideal for high-end investors, with a greater number of tickets per lottery, they can generally have a higher winning percentage.
-            </p>
-            <a href="#min-premium" class="text-muted">Min:</a><span> $ 0.20</span> <a href="#max-premium" class="text-muted">Max:</a><span> $ 500</span>  
-            <p class="txtp" style="font-size: 14px;">earnings per referral <i class="fa fa-check-square" aria-hidden="true"></i></p>   
-            <p class="txtp" style="font-size: 14px;">week promotion <i class="fa fa-check-square" aria-hidden="true"></i></p>  
-            <p class="txtp" style="font-size: 14px;">high rakeback <i class="fa fa-check-square" aria-hidden="true"></i></p>       
-            <a href="#fx-loterry-idxa" class="btn btn-sm btn-outline-light float-right btn-p bg-theme mb-2" id="premium">+ info</a>
+            <!--<a href="#min-started" class="text-muted">Fx ticket:</a><span> $ 0.20</span>-->
+            <p class="txtp" style="font-size: 14px;">Earnings per referral <i class="fa fa-check-square" aria-hidden="true"></i></p>         
+            <p class="txtp" style="font-size: 14px;">Rakeback <i class="fa fa-check-square" aria-hidden="true"></i></p> 
+            <a href="#fx-loterry-idx" type="button" class="btn btn-sm btn-outline-light float-right btn-p bg-theme mb-2" id="starter">+ about</a>
+            <!--<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>-->
           </div>
           <marquee class="text-dark" style="font-size: 19px;">Each plan contains a maximum number of tickets that can be used in lottery rounds.</marquee>
 
@@ -449,6 +417,7 @@ include "php/functions.php";
             <div class="coins-valid float-right"><img src="images/coins/pix.png" height="40px"></div>
           </div>
         </div>
+        <div id="fx-loterry-idx"></div>
         <div class="space-fix-idx-2"></div>
         <!--<div class="space-fix-idx-2"></div>-->
         <h1 class="color-theme mb-5 mb-0" id="howwork">About us - How work</h1>
@@ -539,7 +508,7 @@ include "php/functions.php";
         </div>
         <div id="fx-loterry-idxa" style="margin: 0px;clear: both;" class="banner-lt row">
           <div class="container mt-5 mb-5">
-            <img width="100%" height="80px" style="margin: 0px auto !important;padding: 0px;position: relative;" src="images/banners/banner-idx-desktop.png" class="">
+            <img width="100%" height="80px" style="margin: 0px auto !important;padding: 0px;position: relative;" src="images/banners/banner-idx-desktop.png">
           </div>
         </div>
         <div class="container" style="overflow-y: auto !important;">
@@ -595,76 +564,72 @@ include "php/functions.php";
               $entrys_win_rel_dep = $rows_entrys_rel_dep;
               //
             ?>
-            <div class="cardb bg-light">
+            <div class="card bg-light mb-1">
               <div class="card-body"> 
-                <div class="last-win-block-img" style="width: 90px;height: 90px;float: left; position: relative; top: 5px; left: 0px;">
-
-                  <img class="rounded-circle float-right" title="<?php echo $user_name_w; ?>" width="90" height="90" src="php/imagesperfil/<?php echo $id_user_win; ?>.jpg" alt="Last winners img" style="float: left;">
-                  <div style="margin-left: 10px; margin-top: 92px; width: 4px; height: 4px; background: #28a745 !important;"></div>
-                  <!-- -->
+                <div class="col-3 float-left padding-0" style="height: 100px;"> 
+                  <img class="rounded-circle" title="<?php echo $user_name_w; ?>" width="90px" height="90x" src="php/imagesperfil/<?php echo $id_user_win; ?>.jpg" alt="Last winners img" style="float: left;">
                 </div>
-                <div class="row text-right">
-                  <div class="col-12 last-win-m-p-0">
+                <div class="col-9 float-right padding-0">
+                  <div class="col-12 last-win-m-p-0 mb-2">
                     <div class="col-md-4 wd0 last-win-block-info">Tickets: <a href="#" class="text-muted">35</a> <i class="fa fa-cubes fa-1x" aria-hidden="true"></i>
                     </div>
-                    <div class="col-md-4 wd1 last-win-block-info last-win-l-3">Rewards: <a href="#" class="text-muted">$ 72</a> <i class="fa fa-trophy fa-1x" aria-hidden="true"></i>
+                    <div class="col-md-4 wd1 last-win-block-info">Rewards: <a href="#" class="text-muted">$ 72</a> <i class="fa fa-trophy fa-1x" aria-hidden="true"></i>
                     </div>
-                    <div class="col-md-4 wd2 last-win-block-info-l last-win-l-3">Parcial: <a href="#" class="text-muted">40 %</a>
-                    </div>
-                    <div class="last-win-block-ext-info mt-2">
-                      <nav>
-                        <ul class="last-win-m-p-0">
-                          <li style="margin: 0px;" class="text-muted fs-win-info-t">Pack: <a href="#" class="text-muted">m0DPS3sc</a></li>
-                          <li class="text-muted fs-win-info-t">entrys: <a href="#" class="text-muted">4</a></li>
-                          <li style="margin: 0px;" class="text-muted fs-win-info-t">spend: <a href="#" class="text-muted">20</a></li>
-                        </ul>
-                      </nav>
+                    <div class="col-md-4 wd2 last-win-block-info">Parcial: <a href="#" class="text-muted">40 %</a> <i class="fa fa-line-chart fa-1x" aria-hidden="true"></i>
                     </div>
                   </div>
-                </div>
-                <div class="col text-right" style="top: 14px; padding: 0px;">
-                  <small class="lt-user-name" class="text-muted"><?php echo $count_last_win_lt; ?>° st <?php echo $user_name_w; ?></small>
-                  <?php 
-                
-                    $array_coin_win_rel_dep = array();
-
-                    for($i = 0; $i < 7; $i++){
-
-                      $array_coin_win_rel_dep[$i] = "coin-win-rel-dep-1";
-                    
-                    }
-
-                    if($coin_win_rel_dep == "usdt"){
-                      $array_coin_win_rel_dep[0] = "coin-win-rel-dep-0";
-                    }else if($coin_win_rel_dep == "btc"){
-                      $array_coin_win_rel_dep[1] = "coin-win-rel-dep-0;";
-                    }else if($coin_win_rel_dep == "eth"){
-                      $array_coin_win_rel_dep[2] = "coin-win-rel-dep-0";
-                    }else if($coin_win_rel_dep == "busd"){
-                      $array_coin_win_rel_dep[3] = "coin-win-rel-dep-0";
-                    }else if($coin_win_rel_dep == "ltc"){
-                      $array_coin_win_rel_dep[4] = "coin-win-rel-dep-0";
-                    }else if($coin_win_rel_dep == "tron"){
-                      $array_coin_win_rel_dep[5] = "coin-win-rel-dep-0";
-                    }else if($coin_win_rel_dep == "pix"){
-                      $array_coin_win_rel_dep[6] = "coin-win-rel-dep-0";
-                    }
-
-                  ?>
-                  <div class="fluid-container" style="display: block ruby;">
-                    <img src="images/coins/usdt-sm.png" class="<?php echo $array_coin_win_rel_dep[0]; ?>" title="usdt" width="16" height="16" alt="busd coin">
-                    <img src="images/coins/btc-sm.png" class="<?php echo $array_coin_win_rel_dep[1]; ?>" title="Paid in btc" width="16" height="16" alt="coin selected">
-                    <img src="images/coins/eth-sm.png" class="<?php echo $array_coin_win_rel_dep[2]; ?>" title="ethereum" width="16" height="16" alt="coin selected"> 
-                    <img src="images/coins/busd-sm.png" class="<?php echo $array_coin_win_rel_dep[3]; ?>" title="busd" width="16" height="16" alt="coin selected">
-                    <img src="images/coins/ltc-sm.png" class="<?php echo $array_coin_win_rel_dep[4]; ?>" title="ltc" width="16" height="16" alt="coin selected">
-                    <img src="images/coins/trx-sm.png" class="<?php echo $array_coin_win_rel_dep[5]; ?>" title="trx" width="16" height="16" alt="coin selected">
-                    <img src="images/coins/pix.png" class="<?php echo $array_coin_win_rel_dep[6]; ?>" title="pix" width="16" height="16" alt="coin selected"><br>
+                  <div class="last-win-block-ext-info mt-2">
+                    <nav class="float-right">
+                      <ul class="last-win-m-p-0">
+                        <li style="margin: 0px;" class="text-muted fs-win-info-t">Pack: <a href="#" class="text-muted">m0DPS3sc</a></li>
+                        <li class="text-muted fs-win-info-t">entrys: <a href="#" class="text-muted">4</a></li>
+                        <li style="margin: 0px;" class="text-muted fs-win-info-t">spend: <a href="#" class="text-muted">20</a></li>
+                      </ul>
+                    </nav>
                   </div>
-                  <small class="text-muted">#lt<?php echo $last_session_lt_session; ?></small>
-                  <small class="text-muted"><?php echo base64_decode($array_last_win_lt['data']); ?></small>
+                  <div class="col text-right" style="padding: 0px;">
+                    <?php 
+                  
+                      $array_coin_win_rel_dep = array();
+
+                      for($i = 0; $i < 7; $i++){
+
+                        $array_coin_win_rel_dep[$i] = "coin-win-rel-dep-1";
+                      
+                      }
+
+                      if($coin_win_rel_dep == "usdt"){
+                        $array_coin_win_rel_dep[0] = "coin-win-rel-dep-0";
+                      }else if($coin_win_rel_dep == "btc"){
+                        $array_coin_win_rel_dep[1] = "coin-win-rel-dep-0;";
+                      }else if($coin_win_rel_dep == "eth"){
+                        $array_coin_win_rel_dep[2] = "coin-win-rel-dep-0";
+                      }else if($coin_win_rel_dep == "busd"){
+                        $array_coin_win_rel_dep[3] = "coin-win-rel-dep-0";
+                      }else if($coin_win_rel_dep == "ltc"){
+                        $array_coin_win_rel_dep[4] = "coin-win-rel-dep-0";
+                      }else if($coin_win_rel_dep == "tron"){
+                        $array_coin_win_rel_dep[5] = "coin-win-rel-dep-0";
+                      }else if($coin_win_rel_dep == "pix"){
+                        $array_coin_win_rel_dep[6] = "coin-win-rel-dep-0";
+                      }
+
+                    ?>
+                    <div class="last-win-block-ext-coin-info mt-2">
+                      <img src="images/coins/usdt-sm.png" class="<?php echo $array_coin_win_rel_dep[0]; ?>" title="usdt" width="16" height="16" alt="busd coin">
+                      <img src="images/coins/btc-sm.png" class="<?php echo $array_coin_win_rel_dep[1]; ?>" title="Paid in btc" width="16" height="16" alt="coin selected">
+                      <img src="images/coins/eth-sm.png" class="<?php echo $array_coin_win_rel_dep[2]; ?>" title="ethereum" width="16" height="16" alt="coin selected"> 
+                      <img src="images/coins/busd-sm.png" class="<?php echo $array_coin_win_rel_dep[3]; ?>" title="busd" width="16" height="16" alt="coin selected">
+                      <img src="images/coins/ltc-sm.png" class="<?php echo $array_coin_win_rel_dep[4]; ?>" title="ltc" width="16" height="16" alt="coin selected">
+                      <img src="images/coins/trx-sm.png" class="<?php echo $array_coin_win_rel_dep[5]; ?>" title="trx" width="16" height="16" alt="coin selected">
+                      <img src="images/coins/pix.png" class="<?php echo $array_coin_win_rel_dep[6]; ?>" title="pix" width="16" height="16" alt="coin selected"><br>
+                    </div>
+                    <small class="text-muted float-left"><?php echo $count_last_win_lt; ?>° st <?php echo $user_name_w; ?></small>
+                    <small class="text-muted">#lt<?php echo $last_session_lt_session; ?></small>
+                    <small class="text-muted"><?php echo base64_decode($array_last_win_lt['data']); ?></small>
+                  </div>
                 </div>
               </div>
-              <hr>
             </div>
             <?php $count_last_win_lt++; } ?>
           </div>
@@ -819,8 +784,8 @@ include "php/functions.php";
             window.scrollTo(0, 0);
 
             //Add height for init loading page      
-            const viewportHeight = window.innerHeight;
-            $(".fix").css({"height": viewportHeight+"px"});
+            const viewportHeighti = window.innerHeight;
+            $(".fix").css({"height": viewportHeighti+"px"});
 
             //init show dep
             $(".depo-user:eq(0)").addClass("depo-user-selected");

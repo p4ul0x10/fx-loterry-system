@@ -489,11 +489,11 @@ $mode_theme_text = text_color($con);
 
                 ?>   
               </div>
-              <div class="col-md-12 card card-lt-wf <?php echo $mode_theme_bg[0]; ?>" style="border: none; padding: 0px;">
-                <div class="fixed-table-pagination" style="">
-                  <div class="float-left pagination-detail">
+              <div class="col-md-12 card-lt-wf <?php echo $mode_theme_bg[0]; ?>" style="border: none; padding: 0px;">
+                <div class="fixed-table-pagination mt-2">
+                  <div class="col-4 float-left pagination-detail padding-0">
                     <div class="page-list color-theme">
-                      <div class="btn-group dropdown dropup">
+                      <div class="btn-group dropdown dropup float-left">
                         <button class="btn btn-secondary dropdown-toggle bg-theme" type="button" data-bs-toggle="dropdown" id="wdd" onclick="inif(id);">
                           <span class="page-size page-size-w"><?php echo $array_user_config['lt_wipg']; ?></span>
                         <span class="caret"></span>
@@ -504,10 +504,11 @@ $mode_theme_text = text_color($con);
                           <div class="dropdown-item page-nw" id="w48" onclick="inif(id)">48</div>
                           <div class="dropdown-item page-nw" id="wa<?php echo $wa; ?>" onclick="inif(id)">All</div>
                         </div>
-                      </div></div>
+                      </div>
                     </div>
-                    <div class="pg-w float-right pagination">
-                      <ul class="pagination float-right">
+                  </div>
+                  <div class="col-8 pg-w float-right padding-0">
+                      <ul class="float-right" style="display: flex;">
                         <?php 
                         if($count_wld > $wcount){ //lines on db > itens / view 
 

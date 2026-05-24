@@ -335,6 +335,35 @@ include "php/functions.php";
         googleTranslateScript.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
         document.getElementsByTagName('body')[0].appendChild( googleTranslateScript );
       </script>
+      <div class="modal modal-login text-primary" tabindex="-1" role="dialog"  style="top:40px;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-theme">
+              <h5 class="modal-title text-light" align="center">Access your account</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="post" name="formlogin" class="formlogin">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2" class="color-theme">E-mail</label>
+                  <input type="email" class="form-control text-muted emaillogin" name="emailogin" id="emaillogin" placeholder="E-mail válido">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2" class="color-theme">Your password</label>
+                  <input type="password" class="form-control text-muted senhalog" name="senhalogin" id="senhalog" placeholder="Senha de acesso">
+                </div>
+                <div class="return-login"></div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-theme text-light fazer-login">Login</button>
+              <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
   	  <main class="col padding-0" style="width: 100%; top:150px !important;">
   	  	<div class="row bg-light">
   	  		<h3 class="cover-heading color-theme" style="margin:0px auto;">Referral program</h3>

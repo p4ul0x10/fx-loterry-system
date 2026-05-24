@@ -78,7 +78,7 @@
 
   //Add height for init loading page      
   const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
+  const viewportHeightf = window.innerHeight;
  
   $(".hnav-mt").click(function() {
 
@@ -91,6 +91,6 @@
   
   });
 
-  $(".fix").css({"height": viewportHeight+"px"});
+  $(".fix").css({"height": viewportHeightf+"px"});
 
 </script>

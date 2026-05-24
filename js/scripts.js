@@ -926,6 +926,8 @@ $(document).ready(function(){
 	   	}
 	   	//end
 
+
+
 	 	//start att pt1
 	 	tacc = $(".ini-top:eq(0) a:eq(0) p").text();
 	 	taccp = $(".ini-top:eq(0) a:eq(1) p").text();
@@ -933,17 +935,21 @@ $(document).ready(function(){
 	 	tacca = $(".ini-top:eq(1) a:eq(0) p").text();
 	 	taccap = $(".ini-top:eq(1) a:eq(1) p").text();
 
-	   /* $.post("php/att/t1.php",{"tacc":tacc, "taccp":taccp, "tacca":tacca, "taccap":taccap, "tprofit":tprofit}, function(data){
+	 	if(getT.indexOf("backoffice") >= 1){
 
-	   		att_json = JSON.parse(data);
+		    $.post("php/att/t1.php",{"tacc":tacc, "taccp":taccp, "tacca":tacca, "taccap":taccap, "tprofit":tprofit}, function(data){
 
-	   		if(att_json[0] != 0){ $(".ini-top:eq(0) a:eq(0) p").text(att_json[0]); }
-	   		if(att_json[1] != 0){ $(".ini-top:eq(0) a:eq(1) p").text(att_json[1]); }
-	   		if(att_json[2] != 0){ $(".total-acc-user").text(att_json[2]); }
-	   		if(att_json[3] != 0){ $(".ini-top:eq(1) a:eq(1) p").text(att_json[3]); }
-	   		if(att_json[4] != 0){ $(".total-profit-user").text(att_json[4]); }
-	   		
-	   	}); */
+		   		/*att_json = JSON.parse(data);
+
+		   		if(att_json[0] != 0){ $(".ini-top:eq(0) a:eq(0) p").text(att_json[0]); }
+		   		if(att_json[1] != 0){ $(".ini-top:eq(0) a:eq(1) p").text(att_json[1]); }
+		   		if(att_json[2] != 0){ $(".total-acc-user").text(att_json[2]); }
+		   		if(att_json[3] != 0){ $(".ini-top:eq(1) a:eq(1) p").text(att_json[3]); }
+		   		if(att_json[4] != 0){ $(".total-profit-user").text(att_json[4]); }
+		   		*/
+		   	});
+	 	
+	 	}
 	 	//end att pt1
 
 	 	//start att pt2
@@ -959,137 +965,76 @@ $(document).ready(function(){
 	 		lt_d = 1;
 	 	}
 
-	   	$.post("php/att/t2.php",{"tp":tparticipants, "te":tentrys, "tt":ttickets, "tmw":tmax_winners, "tr":trewards, "ltd":lt_d}, function (data){
-	   		
-	   		att_json = JSON.parse(data);
-	   	
-	   		if(att_json[0] != 0){ $(".t-participants").text(att_json[0]); }
-	   		if(att_json[1] != 0){ $(".t-entrys").text(att_json[1]); }
-	   		if(att_json[2] != 0){ $(".t-tickets").text(att_json[2]); }
-			if(att_json[3] != 0){ $(".t-max-winners").text(att_json[3]); }
-	   		if(att_json[4] != 0){ $(".t-rewards").text(att_json[4]); }
-			if(att_json[5] != 0){  
+	 	if(getT.indexOf("backoffice") >= 1){
 
-				add_div = '<div class="lt-ys row fluid-container"></div>';	
-		
-				$(".lt-details").attr("id", "lt-d-1");	
-				
-				if($(".lt-details:eq(0)").attr("class") == "col-6 btn float-right lt-details color-theme btn-theme-outline"){
-					
-					$(".lt-details").removeClass("btn-theme-outline");
-					$(".lt-details").removeClass("color-theme");
-					$(".lt-details").addClass("bg-theme");
-		  			$(".lt-details").addClass("text-light");
-					
-					$(".t-lt-details").remove();
-					$(".lt-ys:eq(1)").remove();
+		   	$.post("php/att/t2.php",{"tp":tparticipants, "te":tentrys, "tt":ttickets, "tmw":tmax_winners, "tr":trewards, "ltd":lt_d}, function (data){
+		   		
+		   		att_json = JSON.parse(data);
+		   	
+		   		if(att_json[0] != 0){ $(".t-participants").text(att_json[0]); }
+		   		if(att_json[1] != 0){ $(".t-entrys").text(att_json[1]); }
+		   		if(att_json[2] != 0){ $(".t-tickets").text(att_json[2]); }
+				if(att_json[3] != 0){ $(".t-max-winners").text(att_json[3]); }
+		   		if(att_json[4] != 0){ $(".t-rewards").text(att_json[4]); }
+				if(att_json[5] != 0){  
 
-				}else{
+					add_div = '<div class="lt-ys row fluid-container"></div>';	
 			
-					$(".lt-details").removeClass("bg-theme");
-		  			$(".lt-details").removeClass("text-light");
-		  			$(".lt-details").addClass("color-theme");
-					$(".lt-details").addClass("btn-theme-outline");
+					$(".lt-details").attr("id", "lt-d-1");	
 					
-					$(".lt-ys:eq(0)").after('<h5 class="color-theme mt-3 mb-3 t-lt-details">Your loterry resume</h5>'+add_div);
-					$(".lt-ys:eq(1)").html(att_json[5]);	
+					if($(".lt-details:eq(0)").attr("class") == "col-6 btn float-right lt-details color-theme btn-theme-outline"){
+						
+						$(".lt-details").removeClass("btn-theme-outline");
+						$(".lt-details").removeClass("color-theme");
+						$(".lt-details").addClass("bg-theme");
+			  			$(".lt-details").addClass("text-light");
+						
+						$(".t-lt-details").remove();
+						$(".lt-ys:eq(1)").remove();
+
+					}else{
+				
+						$(".lt-details").removeClass("bg-theme");
+			  			$(".lt-details").removeClass("text-light");
+			  			$(".lt-details").addClass("color-theme");
+						$(".lt-details").addClass("btn-theme-outline");
+						
+						$(".lt-ys:eq(0)").after('<h5 class="color-theme mt-3 mb-3 t-lt-details">Your loterry resume</h5>'+add_div);
+						$(".lt-ys:eq(1)").html(att_json[5]);	
+					
+					}
+
+					if(lt_d == 0){
+
+			  			$(this).attr("id", "lt-d-1");
+			  			
+			  		}else{
+			  		
+			  			$(this).attr("id", "lt-d-0");
+			  		
+			  		}	
 				
 				}
-
-				if(lt_d == 0){
-
-		  			$(this).attr("id", "lt-d-1");
-		  			
-		  		}else{
-		  		
-		  			$(this).attr("id", "lt-d-0");
-		  		
-		  		}	
 			
-			}
-		
-	   	});
+		   	});
+	   	
+	   	}
 	   	//end att pt2
 
 		//start session bets
-		first_div = $(".box-l a").first();
-		first_bet = first_div.attr("id");
-	
-	   	$.post("php/lt/current_att.php", {"first_id": first_bet}, function(data){
-	   		if(data != ""){
-	   			$(".box-overflow-xltb div ul").html(data);
-	   		}
+		if(getT.indexOf("backoffice") >= 1){
 
-	   	});
-		//end
-
-		//start plans home render
-		url_index = location.href;
-	   	if(url_index.indexOf("index.php") > 0){
-
-		   	wd = window.innerWidth;
-		   	
-		   	str_pc = $(".slider-plan").attr("id");
-		   	str_pc_replace = str_pc.replace("sec-", "");
-
-			pc = str_pc_replace;
-
-			if(wd > 600 && wd < 990){
-
-				pc++; 
-				$(".slider-plan").attr("id", "sec-"+pc);
-
-				if($(".sp-mg-plan:eq(1)").attr("style") == "display: none;" && $(".sp-mg-plan:eq(2)").attr("style") == "display: none;"){
-					
-					if(pc > 3){
-					
-						$(".sp-mg-plan:eq(1)").toggle();
-						$(".sp-mg-plan:eq(0)").hide();
-						pc = 0;
-						
-						current_banner = 1;
-						$(".prev-plan-btn").attr("id", "prev-plan-btn-1");	
-						$(".next-plan-btn").attr("id", "next-plan-btn-3");	
-						$(".slider-plan").attr("id", "sec-0");
-
-					}
-				
-					
-				}else if($(".sp-mg-plan:eq(1)").attr("style") == ""){
+			first_div = $(".box-l a").first();
+			first_bet = first_div.attr("id");
 		
-					if(pc > 3){
-					
-						$(".sp-mg-plan:eq(2)").toggle();
-						$(".sp-mg-plan:eq(1)").hide();
-						pc = 0;
-						
-						current_banner = 2;
-						$(".prev-plan-btn").attr("id", "prev-plan-btn-2");	
-						$(".next-plan-btn").attr("id", "next-plan-btn-3");	
-						$(".slider-plan").attr("id", "sec-0");
+		   	$.post("php/lt/current_att.php", {"first_id": first_bet}, function(data){
+		   		if(data != ""){
+		   			$(".box-overflow-xltb div ul").html(data);
+		   		}
 
-					}
-
-				}else{
-					
-					if(pc > 3){
-						
-						$(".sp-mg-plan:eq(0)").toggle();
-						$(".sp-mg-plan:eq(2)").hide();
-						pc = 0;
-						
-						current_banner = 3;
-						$(".prev-plan-btn").attr("id", "prev-plan-btn-1");	
-						$(".next-plan-btn").attr("id", "next-plan-btn-2");	
-						$(".slider-plan").attr("id", "sec-0");
-
-					}
-
-				}
-			
-			}	
-
-		}
+		   	});
+	   	
+	   	}
 		//end
 
 		//start ajust render on 1024 px or less
@@ -1509,6 +1454,7 @@ function network_analitics(wd_window, ht_window){
 	$(".space-fix-cc:eq(2)").after(dv);
 
 	$.post("php/ref/return_net_analitics.php", {"wd_window": wd_window, "ht_window": ht_window}, function(data){
+		//alert(data);
 		$("#box-menu").html(data);
 	});
 	
@@ -1731,8 +1677,7 @@ function main_change(){
 		$(".network-resources a").css({"margin-bottom":"5px"});
 		
 		$(".space-fix-c").hide();
-		$(".pg-w").removeClass("float-right");
-		$(".pg-w").css({"display":"block ruby", "margin":"0px auto"});
+		$(".pg-w").css({"display":"block", "margin":"0px 0px", "float":"right"});
 		$(".win-resources").addClass("mb-3");
 		$(".net-resources").addClass("mb-3");
 		$(".box-overflow-xltb").css({"top": "11px"});
@@ -1819,34 +1764,21 @@ function main_change(){
 	}else{
 		//$(".max-limit-graph").css({"margin": "0px", "float": "inherit"});
 	}*/
-
+	
 	if(wd > 250 && wd < 1050){
-
-		/*$(".box-graph").css({"clear": "both", "margin-top": "50px !important", "padding": "0px"});
-		$(".box-graph .col-12").css({"padding": "0px"});
-
-		for (var i = 30; i >= 0; i--) {
-
-			rest_div = $(".max-limit-graph:eq("+i+")").text() % 2;
-			
-			if(rest_div == 0){
-				$(".max-limit-graph:eq("+i+")").addClass("graph-r");
-				$(".max-limit-graph:eq("+i+")").css({"text-align": "right"});
-			}else{
-				$(".max-limit-graph:eq("+i+")").addClass("graph-l");				
-				$(".max-limit-graph:eq("+i+")").css({"text-align": "left"});
-			}
-			
-			if(rest_div == 1 && $(".max-limit-graph:eq("+i+")").text() > 2){
-				$(".max-limit-graph:eq("+i+")").css({"clear": "both"});
-			}
-
-		}*/
+	    
+	    if($(".mf").attr("id") == "mf2"){
+		    $(".mf").attr("id", "mf0");
+		}
 	
 	}else if(wd > 1050){
 
 		$(".max-limit-graph").removeClass("graph-r");
 		$(".max-limit-graph").removeClass("graph-l");
+		
+		if($(".mf").attr("id") == "mf2"){
+		    $(".mf").attr("id", "mf0");
+		}
 	
 	}
 	//end
@@ -2138,25 +2070,27 @@ function main_change(){
 		$(".slider-plan").remove();
 		//end
 	}
-	//end
 
-	//start register pw mt add / remove && index page mb add / remove -> index page
+	//start index edit how work and last loterry winners sets
+	last_col_wd = $(".daily-winners .card .card-body .col-3").width();
+
+	if(last_col_wd > 90){
+		last_col_wd = 90;
+	}	
+
+	$(".daily-winners .card .card-body .col-3 img").attr("width", last_col_wd+"px");
+	$(".daily-winners .card .card-body .col-3 img").attr("height", last_col_wd+"px");
+
 	if(wd < 768){
 		
 		$(".p-r .form-control").addClass("mt-2");
-		$(".last-win-block-info").removeClass("last-win-block-dsp-d");
-		$(".last-win-block-info").addClass("last-win-block-dsp-m");
-		$(".last-win-block-info-l").removeClass("last-win-block-dsp-d");
-		$(".last-win-block-info-l").addClass("last-win-block-dsp-m");
+		$(".last-win-block-info").css({"display": "grid"});
 		$("#howwork").removeClass("mb-5");
 
 	}else if(wd >= 768){
 		
 		$(".p-r .form-control").removeClass("mt-2");
-		$(".last-win-block-info").removeClass("last-win-block-dsp-m");
-		$(".last-win-block-info").addClass("last-win-block-dsp-d");
-		$(".last-win-block-info-l").removeClass("last-win-block-dsp-m");
-		$(".last-win-block-info-l").addClass("last-win-block-dsp-d");
+		$(".last-win-block-info").css({"display": "block"});		
 		$("#howwork").addClass("mb-5");
 
 	}
@@ -2230,61 +2164,73 @@ function main_change(){
 	}
 	//end
 
-	//start set style -> current lt status info -> backoffice page
-	if(wd < 850){
-	
-		if($(".lt-ys").length < 2){
-			
-			rec_div1 = $(".lt-ys:eq(0) span:eq(3)").html();
-			rec_div2 = $(".lt-ys:eq(0) span:eq(4)").html();
-			
-			$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
-			$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
+	url = location.href;
 
-			$(".lt-ys:eq(0)").after("<div class='lt-ys row fluid-container'><span class='text-lt text-light' style='padding-top: 18px;'>"+rec_div1+"</span><span class='text-lt text-light' style='padding-top: 18px;'>"+rec_div2+"</span></div>");
+	//start set style -> current lt status info -> backoffice page
+	if(url.indexOf("backoffice") > 0){
+
+		lt_ys = $(".lt-ys:eq(0) span").attr("class");
 		
+		if(lt_ys.indexOf("text-light") > 0){
+			text_lt_ys = "text-light";
+		}else{
+			text_lt_ys = "color-theme";
 		}
-	
-		if(wd > 510){
-				
-			$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
-			$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
-			
-			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
+
+		if(wd < 850){
 		
+			if($(".lt-ys").length < 2){
+				
+				rec_div1 = $(".lt-ys:eq(0) span:eq(3)").html();
+				rec_div2 = $(".lt-ys:eq(0) span:eq(4)").html();
+				
+				$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
+				$(".lt-ys:eq(0) .text-lt:eq(3)").remove();
+
+				$(".lt-ys:eq(0)").after("<div class='lt-ys row fluid-container'><span class='text-lt "+text_lt_ys+"' style='padding-top: 18px;'>"+rec_div1+"</span><span class='text-lt "+text_lt_ys+"' style='padding-top: 18px;'>"+rec_div2+"</span></div>");
+			
+			}
+		
+			if(wd > 510){
+					
+				$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
+				$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
+				
+				$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
+			
+			}else{
+
+				$(".lt-ys:eq(0) .text-light:eq(0)").addClass("col-6");
+				$(".lt-ys:eq(0) .text-light:eq(1)").addClass("col-6");				
+				
+				$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "18px"});
+			
+			}	
+				
 		}else{
 
-			$(".lt-ys:eq(0) .text-light:eq(0)").addClass("col-6");
-			$(".lt-ys:eq(0) .text-light:eq(1)").addClass("col-6");				
-			
-			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "18px"});
-		
-		}	
-			
-	}else{
-
-		if($(".lt-ys").length > 1){
-			
-			rec_div1 = $(".lt-ys:eq(1) span:eq(0)").html();
-			rec_div2 = $(".lt-ys:eq(1) span:eq(1)").html();
-			
-			$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
-			$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
+			if($(".lt-ys").length > 1){
 				
-			$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
+				rec_div1 = $(".lt-ys:eq(1) span:eq(0)").html();
+				rec_div2 = $(".lt-ys:eq(1) span:eq(1)").html();
+				
+				$(".lt-ys:eq(0) .text-light:eq(0)").removeClass("col-6");
+				$(".lt-ys:eq(0) .text-light:eq(1)").removeClass("col-6");
+					
+				$(".lt-ys:eq(0) .text-light:eq(2)").css({"padding-top": "0px"});
 
-			$(".lt-ys:eq(1)").remove();
-			
-			$(".lt-ys:eq(0) .text-lt:eq(2)").after("<span class='text-lt text-light'>"+rec_div1+"</span><span class='text-lt text-light'>"+rec_div2+"</span>");
-			
+				$(".lt-ys:eq(1)").remove();
+				
+				$(".lt-ys:eq(0) .text-lt:eq(2)").after("<span class='text-lt "+text_lt_ys+"'>"+rec_div1+"</span><span class='text-lt "+text_lt_ys+"'>"+rec_div2+"</span>");
+				
+			}
+
 		}
 
 	}
 	//end
 
 	//start select mode show
-	url = location.href;
-
 	if(url.indexOf("backoffice") >= 0){
 
 		if(url.indexOf("modal_deposits") >= 0 || url.indexOf("modal_withdraws") >= 0){
@@ -2305,6 +2251,8 @@ function main_change(){
 			}
 		}
 
+        $(".mf").attr("id", "mf2");
+  
 	}else if(url.indexOf("referral=banners") >= 0 && check_h == "mf0"){
 		network_banners();	
 	}

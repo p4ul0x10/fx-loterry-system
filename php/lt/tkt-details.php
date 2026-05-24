@@ -164,7 +164,7 @@
 							<?php
 				
 								for ($i = $count-1; $i >= 0; $i--) { 
-									echo '<li class="box-l btn btn-sm float-left bg-success ml-1 mr-1 mb-1">
+									echo '<li class="box-l btn-sm float-left bg-success ml-1 mr-1 mb-1">
 	               <a href="#tkts-line" id="'.$str_id_post0.'" class="lt-tkt-box-b text-light">+ '.$ar_num[$i].'<img src="open-iconic-master/png/tag-3x.png" width="10px" height="10px"></a></li>';
 								}
 					

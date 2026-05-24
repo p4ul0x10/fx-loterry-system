@@ -74,6 +74,10 @@
 	
 	//end get method prev || next month
 	//echo $month_current; exit();
+	$wd_window = $_POST['wd'];
+	$ht_window = $_POST['ht'];
+
+	mysqli_query($con, "UPDATE user_config SET window_w_gp = '$wd_window', window_h_gp = '$ht_window' WHERE id_user = '$id_user'");
 
 	include "analitics/functions.php";
 
@@ -111,7 +115,9 @@
 			analitics_graph($con, "f1", $id_user, $leader_nome, $month_current, $year_current, $_POST['wd_col']);
 
 		}else{
+	
 			echo "offdata";
+	
 		}
 	
 	}else if($analitics == "2"){

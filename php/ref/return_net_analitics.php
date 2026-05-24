@@ -177,6 +177,8 @@ $(document).ready(function(){
     
     });
 
+    //$(".mf").attr("id", "mf0");
+
 });
 
 function show_dad(id) {
@@ -326,6 +328,7 @@ function att_pg(filter) {
 
     wd_col = $(".align-graph div:eq(2)").width();
     wd = window.innerWidth;
+    ht = window.innerHeight;
 
     if(analitics != 2){
         
@@ -337,7 +340,7 @@ function att_pg(filter) {
 
     }
 
-    $.post('php/ref/att_analitics.php', {"analitics":analitics, "filter":str_method, "month":str_month, "cyear":att_acy, "wd_col":wd_col, "wd": wd}).done(function(data) {
+    $.post('php/ref/att_analitics.php', {"analitics":analitics, "filter":str_method, "month":str_month, "cyear":att_acy, "wd_col":wd_col, "wd": wd, "ht": ht}).done(function(data) {
         
         filter = str_method+""+str_month;
         str_method1 = filter.substr(1, 1);

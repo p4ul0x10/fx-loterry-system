@@ -215,20 +215,10 @@ if (!isset($_SESSION['email'])) {
           </div>
         </div>
       </div>
+      <!-- start footer here -->
+      <?php include_once "theme-parts/footer.php"; ?>
+      <!-- end footer here -->
       </main>
-      
-     <footer class="col-md-12 footer ff float-left bg-theme">
-        <div class="col text-light mg-footer">
-          <div class="col-md-4 float-left inim" style="height: 40px">
-            <p class="f">Investe FX Robot @ <a href="https://getbootstrap.com/" title="trader center">Trader center</a>,  <a href="https://twitter.com/mdo">2024</a>.</p>
-          </div>
-          <div class="col-md-4 float-right inim" style="height: 40px;">
-             <a href="https://www.infinityfree.com" title="infinityfree" target="_new">Sponsored By:
-            <img src="https://vpassets.infinityfree.net/welcome2017/logo.png" alt="InfinityFree" height="40px">
-          </a>
-          </div>
-        </div>
-      </footer>
     </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

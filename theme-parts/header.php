@@ -51,6 +51,7 @@ if($url_page == "/perfil.php"){
                     $("body").attr("id", country);
                   }); 
 
+                  $(".mf").attr("id", "mf0");
                   document.getElementsByTagName("body")[0].style.overflowY = "auto";
                   document.getElementsByTagName("header")[0].style.zIndex='10000';
                  
